@@ -1,7 +1,7 @@
 ---
 title: 'Why I Started Writing About Data Grids and AI'
 description: 'After years of building data-intensive applications for finance, I realized there is a gap in practical technical content. This site aims to fill it.'
-pubDate: 'Jan 07 2025'
+pubDate: 'Dec 31 2025'
 tags: ['data-grids', 'ai', 'finance']
 ---
 

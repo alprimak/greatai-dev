@@ -1,7 +1,7 @@
 ---
 title: 'Claude Anywhere: My Tailscale + Termux Setup for 24/7 AI Collaboration'
 description: 'How I set up Tailscale and Termux to SSH into my workstation from my phone, enabling continuous Claude Code sessions from anywhere.'
-pubDate: 'Jan 07 2025'
+pubDate: 'Jan 07 2026'
 tags: ['ai', 'productivity', 'claude', 'mobile']
 ---
 
