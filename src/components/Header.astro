@@ -1,18 +1,27 @@
 ---
 import { SITE_TITLE, SOCIAL_LINKS } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header>
 	<nav>
-		<a href="/" class="logo-link"><img src="/logo.svg" alt={SITE_TITLE} height="32" /></a>
+		<a href="/" class="logo-link">
+			<svg width="160" height="32" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label={SITE_TITLE}>
+				<text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500" class="logo-text">great</text>
+				<text x="54" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" class="logo-text">AI</text>
+				<text x="84" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" class="logo-text-muted">.dev</text>
+			</svg>
+		</a>
 		<div class="internal-links">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/projects">Products</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
-		<div class="social-links">
+		<div class="right-links">
+			<ThemeToggle />
+			<div class="social-links">
 			<a href={SOCIAL_LINKS.linkedin} target="_blank">
 				<span class="sr-only">Connect on LinkedIn</span>
 				<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -40,6 +49,7 @@ import HeaderLink from './HeaderLink.astro';
 					></path></svg
 				>
 			</a>
+			</div>
 		</div>
 	</nav>
 </header>
@@ -47,8 +57,9 @@ import HeaderLink from './HeaderLink.astro';
 	header {
 		margin: 0;
 		padding: 0 1em;
-		background: white;
+		background: var(--bg-secondary);
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		transition: background-color 0.2s ease;
 	}
 	.logo-link {
 		display: flex;
@@ -56,8 +67,11 @@ import HeaderLink from './HeaderLink.astro';
 		border-bottom: none !important;
 		padding: 0.5em 0 !important;
 	}
-	.logo-link img {
-		border-radius: 0;
+	.logo-text {
+		fill: rgb(var(--black));
+	}
+	.logo-text-muted {
+		fill: rgb(var(--gray));
 	}
 	nav {
 		display: flex;
@@ -73,6 +87,11 @@ import HeaderLink from './HeaderLink.astro';
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent);
+	}
+	.right-links {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
 	}
 	.social-links,
 	.social-links a {
