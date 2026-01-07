@@ -2,7 +2,7 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'greatai.dev';
-export const SITE_DESCRIPTION = 'Building in public - AI agents, SaaS journey, and productivity insights by Alexander Primak';
+export const SITE_DESCRIPTION = 'Technical insights on AI, high-performance data grids, and building software for finance — by Alexander Primak';
 export const AUTHOR = 'Alexander Primak';
 export const SOCIAL_LINKS = {
 	twitter: 'https://twitter.com/alprimak',

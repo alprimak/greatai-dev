@@ -1,30 +1,24 @@
 ---
-title: 'Hello World - Building in Public'
-description: 'Welcome to greatai.dev - where I document my journey building AI-powered products.'
+title: 'Why I Started Writing About Data Grids and AI'
+description: 'After years of building data-intensive applications for finance, I realized there is a gap in practical technical content. This site aims to fill it.'
 pubDate: 'Jan 07 2025'
-tags: ['building-in-public', 'introduction']
+tags: ['data-grids', 'ai', 'finance']
 ---
 
-Welcome to greatai.dev.
+Most content about data grids is either marketing fluff or academic theory. Same with AI in production — endless hype, very little practical guidance.
 
-I'm Alexander Primak, a software engineer building AI-powered products. This blog is where I'll document the journey - the wins, the failures, and everything in between.
+After years of building trading systems and financial applications, I've accumulated patterns that actually work. This site is where I'll share them.
 
-## What I'm Building
+## What You'll Find Here
 
-Currently working on two main projects:
+**Data Grid Performance** — How to build grids that handle millions of rows with sub-millisecond updates. Virtualization strategies, state management patterns, and the trade-offs nobody talks about.
 
-- **[Purely.app](https://getpurely.app)** - An ADHD-friendly task management PWA with offline-first architecture
-- **[AskTurret](https://askturret.com)** - AI-powered data grid for financial applications
+**AI in Production** — Practical approaches to shipping AI features. Not "here's a ChatGPT wrapper" but actual production concerns: reliability, hallucination prevention, latency optimization, and cost management.
 
-## Why Build in Public?
+**Finance Tech** — Software patterns for applications where correctness and speed both matter. Trading interfaces, analytics dashboards, real-time data pipelines.
 
-Building in public keeps me accountable and forces clarity in my thinking. If I can't explain a decision clearly here, I probably haven't thought it through well enough.
+## Why This Matters
 
-## What to Expect
+The intersection of AI and high-performance data infrastructure is where the interesting problems are. Finance is just the domain — the patterns apply anywhere you need to move fast without breaking things.
 
-- **Technical deep-dives** - How I solve specific problems
-- **AI agents** - Building autonomous systems with Claude
-- **SaaS journey** - Revenue, growth, and business decisions
-- **Productivity** - Tools and workflows that actually work
-
-Let's build something great.
+If you're building data-intensive applications or integrating AI into serious software, this site is for you.

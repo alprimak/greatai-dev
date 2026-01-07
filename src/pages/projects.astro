@@ -2,20 +2,22 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE } from '../consts';
 
-const projects = [
-	{
-		name: 'Purely.app',
-		description: 'ADHD-friendly task management PWA with offline-first architecture',
-		url: 'https://getpurely.app',
-		tags: ['SvelteKit', 'PWA', 'IndexedDB'],
-	},
+const products = [
 	{
 		name: 'AskTurret',
-		description: 'AI-powered data grid and chat for financial applications',
+		description: 'AI-powered data grid for financial applications. High-performance grid with natural language queries, real-time updates, and enterprise-grade reliability.',
 		url: 'https://askturret.com',
-		tags: ['TypeScript', 'AI', 'Data Grid'],
+		tags: ['Data Grid', 'AI', 'Finance', 'TypeScript'],
+		featured: true,
+	},
+	{
+		name: 'AskTurret Grid',
+		description: 'Standalone high-performance data grid component. Handles millions of rows with sub-millisecond updates. Built for trading and analytics.',
+		url: 'https://grid.askturret.com',
+		tags: ['Data Grid', 'Performance', 'TypeScript'],
+		featured: true,
 	},
 ];
 ---
@@ -23,23 +25,23 @@ const projects = [
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Projects | ${SITE_TITLE}`} description="Projects I'm building" />
+		<BaseHead title={`Products | ${SITE_TITLE}`} description="Products and tools I've built" />
 	</head>
 	<body>
 		<Header />
 		<main>
 			<section>
-				<h1>Projects</h1>
-				<p>Things I'm building in public.</p>
+				<h1>Products</h1>
+				<p>Tools I've built for finance and data-intensive applications.</p>
 				<ul class="project-list">
-					{projects.map((project) => (
+					{products.map((product) => (
 						<li class="project-card">
 							<h2>
-								<a href={project.url} target="_blank" rel="noopener">{project.name}</a>
+								<a href={product.url} target="_blank" rel="noopener">{product.name}</a>
 							</h2>
-							<p>{project.description}</p>
+							<p>{product.description}</p>
 							<div class="tags">
-								{project.tags.map((tag) => (
+								{product.tags.map((tag) => (
 									<span class="tag">{tag}</span>
 								))}
 							</div>
