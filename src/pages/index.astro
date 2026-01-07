@@ -54,7 +54,16 @@ const posts = (await getCollection('blog')).sort(
 								<a href={`/blog/${post.id}/`}>
 									<h3 class="title">{post.data.title}</h3>
 									<p class="description">{post.data.description}</p>
-									<p class="date"><FormattedDate date={post.data.pubDate} /></p>
+									<div class="meta">
+										<p class="date"><FormattedDate date={post.data.pubDate} /></p>
+										{post.data.tags && post.data.tags.length > 0 && (
+											<div class="tags">
+												{post.data.tags.map((tag: string) => (
+													<span class="tag">{tag}</span>
+												))}
+											</div>
+										)}
+									</div>
 								</a>
 							</li>
 						))}
@@ -145,10 +154,28 @@ const posts = (await getCollection('blog')).sort(
 				-webkit-box-orient: vertical;
 				overflow: hidden;
 			}
+			.recent-posts .meta {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
 			.recent-posts .date {
 				font-size: 0.875rem;
 				color: rgb(var(--gray));
 				margin: 0;
+			}
+			.recent-posts .tags {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+			}
+			.recent-posts .tag {
+				font-size: 0.75rem;
+				padding: 0.25rem 0.5rem;
+				background: rgba(var(--accent), 0.1);
+				color: rgb(var(--accent));
+				border-radius: 4px;
 			}
 			.view-all {
 				display: inline-block;
