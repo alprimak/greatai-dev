@@ -1,4 +1,5 @@
-<svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#0f1215">greatai</text>
-  <text x="85" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" fill="#71717a">.dev</text>
+<svg width="160" height="32" viewBox="0 0 160 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <text x="0" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="500" fill="#0f1215">great</text>
+  <text x="54" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#0f1215">AI</text>
+  <text x="84" y="24" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" fill="#71717a">.dev</text>
 </svg>
