@@ -1,0 +1,9 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://greatai.dev/sitemap-index.xml
+
+# AI Agents
+# See llms.txt for AI-friendly site description

@@ -4,18 +4,55 @@
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, AUTHOR } from '../consts';
 import Analytics from '@vercel/analytics/astro';
 
 interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	pubDate?: Date;
+	updatedDate?: Date;
+	isArticle?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = FallbackImage, pubDate, updatedDate, isArticle = false } = Astro.props;
+
+// JSON-LD structured data
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": SITE_TITLE,
+	"url": Astro.site,
+	"author": {
+		"@type": "Person",
+		"name": AUTHOR,
+		"url": "https://www.linkedin.com/in/alexander-primak/"
+	}
+};
+
+const articleSchema = isArticle ? {
+	"@context": "https://schema.org",
+	"@type": "BlogPosting",
+	"headline": title,
+	"description": description,
+	"image": new URL(image.src, Astro.site).toString(),
+	"url": canonicalURL.toString(),
+	"datePublished": pubDate?.toISOString(),
+	"dateModified": (updatedDate || pubDate)?.toISOString(),
+	"author": {
+		"@type": "Person",
+		"name": AUTHOR,
+		"url": "https://www.linkedin.com/in/alexander-primak/"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": SITE_TITLE,
+		"url": Astro.site
+	}
+} : null;
 ---
 
 <!-- Theme initialization (prevent flash) -->
@@ -66,3 +103,9 @@ const { title, description, image = FallbackImage } = Astro.props;
 
 <!-- Vercel Web Analytics -->
 <Analytics />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+{isArticle && articleSchema && (
+	<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+)}
