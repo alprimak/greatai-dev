@@ -8,7 +8,7 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
 ---
 
 <html lang="en">
@@ -19,6 +19,19 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				width: calc(100% - 2em);
 				max-width: 100%;
 				margin: 0;
+			}
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				margin-bottom: 2rem;
+				color: rgb(var(--gray));
+				text-decoration: none;
+				font-size: 0.9rem;
+				transition: color 0.2s;
+			}
+			.back-link:hover {
+				color: rgb(var(--accent));
 			}
 			.hero-image {
 				width: 100%;
@@ -36,21 +49,115 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				padding: 1em;
 				color: rgb(var(--gray-dark));
 			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
+			.article-header {
+				margin-bottom: 2.5rem;
+				padding-bottom: 2rem;
+				border-bottom: 1px solid rgba(var(--gray), 0.2);
 			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
+			.article-header h1 {
+				margin: 0 0 1rem 0;
+				font-size: 2.5rem;
+				line-height: 1.2;
+			}
+			.article-meta {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 1rem;
 			}
 			.date {
-				margin-bottom: 0.5em;
 				color: rgb(var(--gray));
+				font-size: 0.9rem;
 			}
 			.last-updated-on {
 				font-style: italic;
+				color: rgb(var(--gray));
+				font-size: 0.85rem;
+			}
+			.tags {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+			}
+			.tag {
+				font-size: 0.75rem;
+				padding: 0.25rem 0.75rem;
+				background: rgba(var(--accent), 0.1);
+				color: rgb(var(--accent));
+				border-radius: 20px;
+				text-transform: lowercase;
+			}
+			.description {
+				color: rgb(var(--gray));
+				font-size: 1.15rem;
+				line-height: 1.6;
+				margin: 0;
+			}
+			/* Prose content styling */
+			.content :global(h2) {
+				margin-top: 2.5rem;
+				margin-bottom: 1rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid rgba(var(--gray), 0.15);
+			}
+			.content :global(h3) {
+				margin-top: 2rem;
+				margin-bottom: 0.75rem;
+			}
+			.content :global(pre) {
+				margin: 1.5rem 0;
+				padding: 1.25rem;
+				border-radius: 8px;
+				background: #1e1e1e !important;
+				overflow-x: auto;
+			}
+			.content :global(code) {
+				font-size: 0.9em;
+				font-family: 'JetBrains Mono', 'Fira Code', monospace;
+			}
+			.content :global(p code) {
+				background: rgba(var(--gray-light), 0.8);
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-size: 0.85em;
+			}
+			:root.dark .content :global(p code) {
+				background: rgba(var(--gray-light), 0.3);
+			}
+			.content :global(ul),
+			.content :global(ol) {
+				margin: 1.5rem 0;
+				padding-left: 1.5rem;
+			}
+			.content :global(li) {
+				margin-bottom: 0.5rem;
+			}
+			.content :global(blockquote) {
+				margin: 1.5rem 0;
+				padding: 1rem 1.5rem;
+				background: rgba(var(--gray-light), 0.3);
+				border-left: 4px solid rgb(var(--accent));
+				border-radius: 0 8px 8px 0;
+			}
+			.content :global(blockquote p) {
+				margin: 0;
+			}
+			.content :global(strong) {
+				color: rgb(var(--black));
+			}
+			.content :global(hr) {
+				margin: 2.5rem 0;
+				border: none;
+				border-top: 1px solid rgba(var(--gray), 0.2);
+			}
+			@media (max-width: 720px) {
+				.article-header h1 {
+					font-size: 1.75rem;
+				}
+				.description {
+					font-size: 1rem;
+				}
 			}
 		</style>
 	</head>
@@ -59,25 +166,37 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+					<a href="/blog" class="back-link">
+						<span>←</span> Back to blog
+					</a>
+					<div class="hero-image">
+						{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					</div>
+					<header class="article-header">
+						<div class="article-meta">
+							<span class="date">
+								<FormattedDate date={pubDate} />
+							</span>
+							{tags && tags.length > 0 && (
+								<div class="tags">
+									{tags.map((tag: string) => (
+										<span class="tag">{tag}</span>
+									))}
+								</div>
+							)}
 						</div>
 						<h1>{title}</h1>
-						<hr />
+						<p class="description">{description}</p>
+						{updatedDate && (
+							<p class="last-updated-on">
+								Last updated on <FormattedDate date={updatedDate} />
+							</p>
+						)}
+					</header>
+					<div class="content">
+						<slot />
 					</div>
-					<slot />
 				</div>
 			</article>
 		</main>
