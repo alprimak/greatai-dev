@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, AUTHOR, SOCIAL_LINKS } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`About | ${SITE_TITLE}`} description={`About ${AUTHOR}`} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<h1>About</h1>
+				<p>
+					I'm {AUTHOR}, a software engineer building AI-powered products and documenting the journey.
+				</p>
+
+				<h2>What I'm Working On</h2>
+				<p>
+					Currently building <a href="https://getpurely.app">Purely.app</a> (ADHD-friendly task management)
+					and <a href="https://askturret.com">AskTurret</a> (AI data grid for finance).
+				</p>
+
+				<h2>Building in Public</h2>
+				<p>
+					I share my journey building SaaS products with AI agents, from technical deep-dives
+					to business decisions. This blog is part of my commitment to transparency and learning in public.
+				</p>
+
+				<h2>Connect</h2>
+				<ul>
+					<li><a href={SOCIAL_LINKS.linkedin}>LinkedIn</a> - Where I post most frequently</li>
+					<li><a href={SOCIAL_LINKS.twitter}>Twitter/X</a> - Tech thoughts and updates</li>
+					<li><a href={SOCIAL_LINKS.github}>GitHub</a> - Open source work</li>
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

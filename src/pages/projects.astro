@@ -1,0 +1,93 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const projects = [
+	{
+		name: 'Purely.app',
+		description: 'ADHD-friendly task management PWA with offline-first architecture',
+		url: 'https://getpurely.app',
+		tags: ['SvelteKit', 'PWA', 'IndexedDB'],
+	},
+	{
+		name: 'AskTurret',
+		description: 'AI-powered data grid and chat for financial applications',
+		url: 'https://askturret.com',
+		tags: ['TypeScript', 'AI', 'Data Grid'],
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Projects | ${SITE_TITLE}`} description="Projects I'm building" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section>
+				<h1>Projects</h1>
+				<p>Things I'm building in public.</p>
+				<ul class="project-list">
+					{projects.map((project) => (
+						<li class="project-card">
+							<h2>
+								<a href={project.url} target="_blank" rel="noopener">{project.name}</a>
+							</h2>
+							<p>{project.description}</p>
+							<div class="tags">
+								{project.tags.map((tag) => (
+									<span class="tag">{tag}</span>
+								))}
+							</div>
+						</li>
+					))}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+		<style>
+			.project-list {
+				list-style: none;
+				padding: 0;
+				display: grid;
+				gap: 1.5rem;
+			}
+			.project-card {
+				padding: 1.5rem;
+				border-radius: 8px;
+				background: white;
+				box-shadow: var(--box-shadow);
+			}
+			.project-card h2 {
+				margin: 0 0 0.5rem 0;
+				font-size: 1.5rem;
+			}
+			.project-card h2 a {
+				text-decoration: none;
+			}
+			.project-card h2 a:hover {
+				text-decoration: underline;
+			}
+			.project-card p {
+				margin: 0 0 1rem 0;
+				color: rgb(var(--gray));
+			}
+			.tags {
+				display: flex;
+				gap: 0.5rem;
+				flex-wrap: wrap;
+			}
+			.tag {
+				padding: 0.25rem 0.5rem;
+				background: rgb(var(--gray-light));
+				border-radius: 4px;
+				font-size: 0.875rem;
+				color: rgb(var(--gray-dark));
+			}
+		</style>
+	</body>
+</html>
