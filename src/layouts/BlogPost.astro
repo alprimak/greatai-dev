@@ -152,11 +152,61 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 				border-top: 1px solid rgba(var(--gray), 0.2);
 			}
 			@media (max-width: 720px) {
+				.prose {
+					padding: 0.5em;
+				}
+				.back-link {
+					margin-bottom: 1.5rem;
+				}
+				.article-header {
+					margin-bottom: 1.5rem;
+					padding-bottom: 1.5rem;
+				}
 				.article-header h1 {
-					font-size: 1.75rem;
+					font-size: 1.5rem;
+					line-height: 1.3;
 				}
 				.description {
 					font-size: 1rem;
+				}
+				.content :global(h2) {
+					font-size: 1.4rem;
+					margin-top: 2rem;
+				}
+				.content :global(h3) {
+					font-size: 1.2rem;
+					margin-top: 1.5rem;
+				}
+				.content :global(pre) {
+					margin-left: -0.5em;
+					margin-right: -0.5em;
+					padding: 1rem;
+					border-radius: 0;
+					font-size: 0.8em;
+				}
+				.content :global(code) {
+					font-size: 0.85em;
+				}
+				.content :global(p code) {
+					font-size: 0.8em;
+					word-break: break-word;
+				}
+				.content :global(ul),
+				.content :global(ol) {
+					padding-left: 1.25rem;
+				}
+				.content :global(blockquote) {
+					margin-left: 0;
+					margin-right: 0;
+					padding: 0.75rem 1rem;
+					font-size: 0.95rem;
+				}
+				.content :global(img) {
+					margin-left: -0.5em;
+					margin-right: -0.5em;
+					width: calc(100% + 1em);
+					max-width: calc(100% + 1em);
+					border-radius: 0;
 				}
 			}
 		</style>
