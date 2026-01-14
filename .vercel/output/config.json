@@ -2,26 +2,34 @@
 	"version": 3,
 	"routes": [
 		{
+			"src": "/_app/immutable/.+",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
 			"handle": "filesystem"
 		},
 		{
-			"src": "^/_astro/(.*)$",
-			"headers": {
-				"cache-control": "public, max-age=31536000, immutable"
-			},
-			"continue": true
+			"src": "^/?(?:/__data.json)?$",
+			"dest": "/"
 		},
 		{
-			"src": "^/_server-islands/([^/]+?)/?$",
-			"dest": "_render"
+			"src": "^/api/reactions/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/api/reactions/[slug]"
 		},
 		{
-			"src": "^/_image/?$",
-			"dest": "_render"
+			"src": "^/blog/?(?:/__data.json)?$",
+			"dest": "/blog"
 		},
 		{
-			"src": "^/api/reactions/([^/]+?)/?$",
-			"dest": "_render"
+			"src": "^/blog/([^/]+?)/?(?:/__data.json)?$",
+			"dest": "/blog/[slug]"
+		},
+		{
+			"src": "/.*",
+			"dest": "/![-]/catchall"
 		}
-	]
+	],
+	"overrides": {}
 }
