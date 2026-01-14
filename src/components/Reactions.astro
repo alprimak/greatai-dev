@@ -103,20 +103,20 @@ const { slug } = Astro.props;
   }
 </style>
 
-<script>
-  function initReactions() {
-    const containers = document.querySelectorAll('.reactions');
+<script is:inline>
+  (function() {
+    var containers = document.querySelectorAll('.reactions');
 
-    containers.forEach((container) => {
-      const slug = container.getAttribute('data-slug');
+    containers.forEach(function(container) {
+      var slug = container.getAttribute('data-slug');
       if (!slug) return;
 
-      const likeBtn = container.querySelector('.like-btn') as HTMLButtonElement;
-      const dislikeBtn = container.querySelector('.dislike-btn') as HTMLButtonElement;
-      const likeCount = container.querySelector('.like-count') as HTMLSpanElement;
+      var likeBtn = container.querySelector('.like-btn');
+      var dislikeBtn = container.querySelector('.dislike-btn');
+      var likeCount = container.querySelector('.like-count');
 
-      const storageKey = `reaction:${slug}`;
-      const existingVote = localStorage.getItem(storageKey);
+      var storageKey = 'reaction:' + slug;
+      var existingVote = localStorage.getItem(storageKey);
 
       // Mark existing vote
       if (existingVote === 'like') {
@@ -126,32 +126,28 @@ const { slug } = Astro.props;
       }
 
       // Fetch current count
-      fetch(`/api/reactions/${slug}`)
-        .then((res) => res.json())
-        .then((data) => {
-          likeCount.textContent = data.likes?.toString() ?? '0';
+      fetch('/api/reactions/' + slug)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          likeCount.textContent = data.likes ? data.likes.toString() : '0';
         })
-        .catch(() => {
+        .catch(function() {
           likeCount.textContent = '0';
         });
 
       // Handle clicks
-      const handleReaction = async (type: 'like' | 'dislike') => {
-        if (existingVote) {
-          // Already voted
-          return;
-        }
+      function handleReaction(type) {
+        if (existingVote) return;
 
-        const btn = type === 'like' ? likeBtn : dislikeBtn;
+        var btn = type === 'like' ? likeBtn : dislikeBtn;
         btn.disabled = true;
 
-        try {
-          const res = await fetch(`/api/reactions/${slug}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ type }),
-          });
-
+        fetch('/api/reactions/' + slug, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: type })
+        })
+        .then(function(res) {
           if (res.ok) {
             localStorage.setItem(storageKey, type);
             btn.classList.add('voted');
@@ -159,20 +155,22 @@ const { slug } = Astro.props;
             dislikeBtn.disabled = true;
 
             if (type === 'like') {
-              const data = await res.json();
-              if (data.likes !== undefined) {
-                likeCount.textContent = data.likes.toString();
-              }
+              return res.json().then(function(data) {
+                if (data.likes !== undefined) {
+                  likeCount.textContent = data.likes.toString();
+                }
+              });
             }
           }
-        } catch (error) {
+        })
+        .catch(function(error) {
           console.error('Failed to submit reaction:', error);
           btn.disabled = false;
-        }
-      };
+        });
+      }
 
-      likeBtn.addEventListener('click', () => handleReaction('like'));
-      dislikeBtn.addEventListener('click', () => handleReaction('dislike'));
+      likeBtn.addEventListener('click', function() { handleReaction('like'); });
+      dislikeBtn.addEventListener('click', function() { handleReaction('dislike'); });
 
       // Disable both if already voted
       if (existingVote) {
@@ -180,15 +178,5 @@ const { slug } = Astro.props;
         dislikeBtn.disabled = true;
       }
     });
-  }
-
-  // Run on initial load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initReactions);
-  } else {
-    initReactions();
-  }
-
-  // Also run on View Transitions (if used)
-  document.addEventListener('astro:page-load', initReactions);
+  })();
 </script>
