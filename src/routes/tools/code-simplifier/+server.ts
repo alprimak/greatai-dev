@@ -1,9 +1,8 @@
 import { json, error } from '@sveltejs/kit';
+import { env } from '$env/dynamic/private';
 import Anthropic from '@anthropic-ai/sdk';
 import { checkRateLimit, getRateLimitStatus } from '$lib/ratelimit';
 import type { RequestHandler } from './$types';
-
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 const SYSTEM_PROMPT = `You are a code simplification expert. Your task is to take the provided code and return a cleaner, more maintainable version while preserving all functionality.
 
@@ -55,7 +54,7 @@ export const GET: RequestHandler = async ({ request }) => {
 
 // POST - Simplify code
 export const POST: RequestHandler = async ({ request }) => {
-	if (!ANTHROPIC_API_KEY) {
+	if (!env.ANTHROPIC_API_KEY) {
 		throw error(500, 'API not configured');
 	}
 
@@ -97,7 +96,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
 	try {
 		const client = new Anthropic({
-			apiKey: ANTHROPIC_API_KEY
+			apiKey: env.ANTHROPIC_API_KEY
 		});
 
 		const languageHint = body.language ? `\n\nLanguage: ${body.language}` : '';
