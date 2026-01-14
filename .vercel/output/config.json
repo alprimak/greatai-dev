@@ -39,8 +39,20 @@
 			"dest": "/tools"
 		},
 		{
+			"src": "^/tools/code-explainer/?(?:/__data.json)?$",
+			"dest": "/tools/code-explainer"
+		},
+		{
 			"src": "^/tools/code-simplifier/?(?:/__data.json)?$",
 			"dest": "/tools/code-simplifier"
+		},
+		{
+			"src": "^/tools/json-formatter/?(?:/__data.json)?$",
+			"dest": "/tools/json-formatter"
+		},
+		{
+			"src": "^/tools/regex-tester/?(?:/__data.json)?$",
+			"dest": "/tools/regex-tester"
 		},
 		{
 			"src": "^/tools/token-calculator/?(?:/__data.json)?$",

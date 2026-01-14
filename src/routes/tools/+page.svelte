@@ -9,6 +9,14 @@
 			rateLimit: '5 requests/hour'
 		},
 		{
+			name: 'Code Explainer',
+			description: 'Get AI-powered explanations of any code. Choose brief, detailed, or line-by-line.',
+			href: '/tools/code-explainer',
+			icon: 'explain',
+			status: 'live',
+			rateLimit: '5 requests/hour'
+		},
+		{
 			name: 'Token Calculator',
 			description: 'Count tokens for Claude, GPT-4, and other models. Real-time counting as you type.',
 			href: '/tools/token-calculator',
@@ -17,11 +25,20 @@
 			rateLimit: 'Unlimited'
 		},
 		{
-			name: 'Model Comparison',
-			description: 'Compare AI models side-by-side: pricing, context windows, capabilities.',
-			href: '/tools/model-comparison',
-			icon: 'compare',
-			status: 'coming-soon'
+			name: 'JSON Formatter',
+			description: 'Format, validate, minify, and sort JSON with syntax highlighting.',
+			href: '/tools/json-formatter',
+			icon: 'json',
+			status: 'live',
+			rateLimit: 'Unlimited'
+		},
+		{
+			name: 'Regex Tester',
+			description: 'Test regular expressions with real-time matching and AI-powered explanations.',
+			href: '/tools/regex-tester',
+			icon: 'regex',
+			status: 'live',
+			rateLimit: '5 AI explanations/hour'
 		},
 		{
 			name: 'Prompt Optimizer',
@@ -67,16 +84,28 @@
 							<polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
 							<line x1="12" y1="22.08" x2="12" y2="12"/>
 						</svg>
+					{:else if tool.icon === 'explain'}
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<circle cx="12" cy="12" r="10"/>
+							<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+							<line x1="12" y1="17" x2="12.01" y2="17"/>
+						</svg>
 					{:else if tool.icon === 'tokens'}
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 							<circle cx="12" cy="12" r="10"/>
 							<path d="M12 6v6l4 2"/>
 						</svg>
-					{:else if tool.icon === 'compare'}
+					{:else if tool.icon === 'json'}
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<line x1="18" y1="20" x2="18" y2="10"/>
-							<line x1="12" y1="20" x2="12" y2="4"/>
-							<line x1="6" y1="20" x2="6" y2="14"/>
+							<path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/>
+							<path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/>
+						</svg>
+					{:else if tool.icon === 'regex'}
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M17 3v10"/>
+							<path d="m12.67 5.5 8.66 5"/>
+							<path d="m12.67 10.5 8.66-5"/>
+							<path d="M9 17a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2z"/>
 						</svg>
 					{:else if tool.icon === 'optimize'}
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
