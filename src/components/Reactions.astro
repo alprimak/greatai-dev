@@ -103,80 +103,71 @@ const { slug } = Astro.props;
   }
 </style>
 
-<script is:inline>
-  (function() {
-    var containers = document.querySelectorAll('.reactions');
+<script define:vars={{ slug }}>
+  var likeBtn = document.querySelector('.reactions[data-slug="' + slug + '"] .like-btn');
+  var dislikeBtn = document.querySelector('.reactions[data-slug="' + slug + '"] .dislike-btn');
+  var likeCount = document.querySelector('.reactions[data-slug="' + slug + '"] .like-count');
 
-    containers.forEach(function(container) {
-      var slug = container.getAttribute('data-slug');
-      if (!slug) return;
+  var storageKey = 'reaction:' + slug;
+  var existingVote = localStorage.getItem(storageKey);
 
-      var likeBtn = container.querySelector('.like-btn');
-      var dislikeBtn = container.querySelector('.dislike-btn');
-      var likeCount = container.querySelector('.like-count');
+  // Mark existing vote
+  if (existingVote === 'like') {
+    likeBtn.classList.add('voted');
+    likeBtn.disabled = true;
+    dislikeBtn.disabled = true;
+  } else if (existingVote === 'dislike') {
+    dislikeBtn.classList.add('voted');
+    likeBtn.disabled = true;
+    dislikeBtn.disabled = true;
+  }
 
-      var storageKey = 'reaction:' + slug;
-      var existingVote = localStorage.getItem(storageKey);
+  // Fetch current count
+  fetch('/api/reactions/' + slug)
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      likeCount.textContent = data.likes ? data.likes.toString() : '0';
+    })
+    .catch(function() {
+      likeCount.textContent = '0';
+    });
 
-      // Mark existing vote
-      if (existingVote === 'like') {
-        likeBtn.classList.add('voted');
-      } else if (existingVote === 'dislike') {
-        dislikeBtn.classList.add('voted');
-      }
+  // Handle clicks
+  function handleReaction(type) {
+    if (existingVote) return;
+    existingVote = type; // Prevent double clicks
 
-      // Fetch current count
-      fetch('/api/reactions/' + slug)
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-          likeCount.textContent = data.likes ? data.likes.toString() : '0';
-        })
-        .catch(function() {
-          likeCount.textContent = '0';
-        });
+    var btn = type === 'like' ? likeBtn : dislikeBtn;
+    btn.disabled = true;
 
-      // Handle clicks
-      function handleReaction(type) {
-        if (existingVote) return;
-
-        var btn = type === 'like' ? likeBtn : dislikeBtn;
-        btn.disabled = true;
-
-        fetch('/api/reactions/' + slug, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ type: type })
-        })
-        .then(function(res) {
-          if (res.ok) {
-            localStorage.setItem(storageKey, type);
-            btn.classList.add('voted');
-            likeBtn.disabled = true;
-            dislikeBtn.disabled = true;
-
-            if (type === 'like') {
-              return res.json().then(function(data) {
-                if (data.likes !== undefined) {
-                  likeCount.textContent = data.likes.toString();
-                }
-              });
-            }
-          }
-        })
-        .catch(function(error) {
-          console.error('Failed to submit reaction:', error);
-          btn.disabled = false;
-        });
-      }
-
-      likeBtn.addEventListener('click', function() { handleReaction('like'); });
-      dislikeBtn.addEventListener('click', function() { handleReaction('dislike'); });
-
-      // Disable both if already voted
-      if (existingVote) {
+    fetch('/api/reactions/' + slug, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: type })
+    })
+    .then(function(res) {
+      if (res.ok) {
+        localStorage.setItem(storageKey, type);
+        btn.classList.add('voted');
         likeBtn.disabled = true;
         dislikeBtn.disabled = true;
+
+        if (type === 'like') {
+          return res.json().then(function(data) {
+            if (data.likes !== undefined) {
+              likeCount.textContent = data.likes.toString();
+            }
+          });
+        }
       }
+    })
+    .catch(function(error) {
+      console.error('Failed to submit reaction:', error);
+      btn.disabled = false;
+      existingVote = null;
     });
-  })();
+  }
+
+  likeBtn.addEventListener('click', function() { handleReaction('like'); });
+  dislikeBtn.addEventListener('click', function() { handleReaction('dislike'); });
 </script>
