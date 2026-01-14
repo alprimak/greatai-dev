@@ -49,6 +49,7 @@
 		<div class="internal-links">
 			<a href="/" class:active={isActive('/')}>Home</a>
 			<a href="/blog" class:active={isActive('/blog')}>Blog</a>
+			<a href="/tools" class:active={isActive('/tools')}>Tools</a>
 			<a href="/projects" class:active={isActive('/projects')}>Products</a>
 			<a href="/about" class:active={isActive('/about')}>About</a>
 		</div>
