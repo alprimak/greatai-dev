@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SITE_TITLE, SITE_DESCRIPTION, AUTHOR } from '$lib/config';
+	import { SITE_TITLE, SITE_DESCRIPTION } from '$lib/config';
 
 	let { data } = $props();
 
@@ -20,9 +20,6 @@
 <main>
 	<section class="hero">
 		<h1>Technical insights on AI, trading systems, and high-performance software</h1>
-		<p class="subtitle">
-			By <strong>{AUTHOR}</strong> — 8+ years building trading UIs at hedge funds and banks
-		</p>
 	</section>
 
 	<section class="posts">
@@ -66,10 +63,6 @@
 		font-size: 2.5rem;
 		line-height: 1.2;
 		margin-bottom: 1rem;
-	}
-	.subtitle {
-		color: rgb(var(--gray));
-		font-size: 1.1rem;
 	}
 	.posts h2 {
 		margin-bottom: 1.5rem;
