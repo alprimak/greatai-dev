@@ -1,0 +1,184 @@
+---
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<div class="reactions" data-slug={slug}>
+  <button class="reaction-btn like-btn" data-type="like" aria-label="Like this article">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 10v12"></path>
+      <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"></path>
+    </svg>
+    <span class="like-count">...</span>
+  </button>
+  <button class="reaction-btn dislike-btn" data-type="dislike" aria-label="Dislike this article">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 14V2"></path>
+      <path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z"></path>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .reactions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--reactions-bg, #f5f5f5);
+  }
+
+  :global(.dark) .reactions {
+    --reactions-bg: #1a1a2e;
+  }
+
+  .reaction-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--btn-border, #ddd);
+    border-radius: 6px;
+    background: var(--btn-bg, white);
+    color: var(--btn-color, #333);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+  }
+
+  :global(.dark) .reaction-btn {
+    --btn-bg: #252542;
+    --btn-border: #3a3a5c;
+    --btn-color: #e0e0e0;
+  }
+
+  .reaction-btn:hover:not(:disabled) {
+    border-color: var(--btn-hover-border, #999);
+    transform: translateY(-1px);
+  }
+
+  .reaction-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .reaction-btn.voted {
+    border-color: var(--voted-border, #4a9eff);
+    background: var(--voted-bg, #e8f4ff);
+  }
+
+  :global(.dark) .reaction-btn.voted {
+    --voted-border: #4a9eff;
+    --voted-bg: #1a2a40;
+  }
+
+  .like-btn.voted {
+    --voted-border: #22c55e;
+    --voted-bg: #dcfce7;
+  }
+
+  :global(.dark) .like-btn.voted {
+    --voted-border: #22c55e;
+    --voted-bg: #14532d20;
+  }
+
+  .dislike-btn.voted {
+    --voted-border: #ef4444;
+    --voted-bg: #fee2e2;
+  }
+
+  :global(.dark) .dislike-btn.voted {
+    --voted-border: #ef4444;
+    --voted-bg: #7f1d1d20;
+  }
+
+  .like-count {
+    font-weight: 500;
+    min-width: 1.5rem;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const containers = document.querySelectorAll('.reactions');
+
+    containers.forEach((container) => {
+      const slug = container.getAttribute('data-slug');
+      if (!slug) return;
+
+      const likeBtn = container.querySelector('.like-btn') as HTMLButtonElement;
+      const dislikeBtn = container.querySelector('.dislike-btn') as HTMLButtonElement;
+      const likeCount = container.querySelector('.like-count') as HTMLSpanElement;
+
+      const storageKey = `reaction:${slug}`;
+      const existingVote = localStorage.getItem(storageKey);
+
+      // Mark existing vote
+      if (existingVote === 'like') {
+        likeBtn.classList.add('voted');
+      } else if (existingVote === 'dislike') {
+        dislikeBtn.classList.add('voted');
+      }
+
+      // Fetch current count
+      fetch(`/api/reactions/${slug}`)
+        .then((res) => res.json())
+        .then((data) => {
+          likeCount.textContent = data.likes?.toString() ?? '0';
+        })
+        .catch(() => {
+          likeCount.textContent = '0';
+        });
+
+      // Handle clicks
+      const handleReaction = async (type: 'like' | 'dislike') => {
+        if (existingVote) {
+          // Already voted
+          return;
+        }
+
+        const btn = type === 'like' ? likeBtn : dislikeBtn;
+        btn.disabled = true;
+
+        try {
+          const res = await fetch(`/api/reactions/${slug}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type }),
+          });
+
+          if (res.ok) {
+            localStorage.setItem(storageKey, type);
+            btn.classList.add('voted');
+            likeBtn.disabled = true;
+            dislikeBtn.disabled = true;
+
+            if (type === 'like') {
+              const data = await res.json();
+              if (data.likes !== undefined) {
+                likeCount.textContent = data.likes.toString();
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Failed to submit reaction:', error);
+          btn.disabled = false;
+        }
+      };
+
+      likeBtn.addEventListener('click', () => handleReaction('like'));
+      dislikeBtn.addEventListener('click', () => handleReaction('dislike'));
+
+      // Disable both if already voted
+      if (existingVote) {
+        likeBtn.disabled = true;
+        dislikeBtn.disabled = true;
+      }
+    });
+  });
+</script>

@@ -1,7 +1,7 @@
 {
   "name": "greatai-dev",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -12,8 +12,10 @@
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.1",
+    "@astrojs/vercel": "^9.0.3",
     "@tailwindcss/vite": "^4.1.18",
     "@vercel/analytics": "^1.6.1",
+    "@vercel/kv": "^1.0.1",
     "astro": "^5.16.7",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.18"
