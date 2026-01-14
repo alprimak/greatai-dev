@@ -196,6 +196,9 @@
 		</a>
 		<h1><span class="icon">&#x2728;</span> Code Simplifier</h1>
 		<p class="subtitle">Paste your code and get a cleaner, more maintainable version</p>
+		<p class="attribution">
+			Inspired by <a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">Boris Cherny's</a> code-simplifier agent for Claude Code.
+		</p>
 	</header>
 
 	<div class="controls">
@@ -319,6 +322,21 @@
 	.subtitle {
 		color: #888;
 		margin: 0;
+	}
+
+	.attribution {
+		color: #666;
+		font-size: 0.85rem;
+		margin: 0.75rem 0 0;
+	}
+
+	.attribution a {
+		color: #27ca40;
+		text-decoration: none;
+	}
+
+	.attribution a:hover {
+		text-decoration: underline;
 	}
 
 	.controls {
