@@ -104,7 +104,7 @@ const { slug } = Astro.props;
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  function initReactions() {
     const containers = document.querySelectorAll('.reactions');
 
     containers.forEach((container) => {
@@ -180,5 +180,15 @@ const { slug } = Astro.props;
         dislikeBtn.disabled = true;
       }
     });
-  });
+  }
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReactions);
+  } else {
+    initReactions();
+  }
+
+  // Also run on View Transitions (if used)
+  document.addEventListener('astro:page-load', initReactions);
 </script>
