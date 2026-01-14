@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Theme initialization (prevent flash) - must be blocking but minimal --><script>
+(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark')})();
+</script> <!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="greatai.dev" href="https://greatai.dev/rss.xml"><meta name="generator" content="Astro v5.16.7"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin fetchpriority="high"><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://greatai.dev/blog/trading-ui-patterns/"><!-- Primary Meta Tags --><title>Trading UI Patterns: What 8 Years in Hedge Funds Taught Me</title><meta name="title" content="Trading UI Patterns: What 8 Years in Hedge Funds Taught Me"><meta name="description" content="Practical UI patterns from building trading systems at Millennium, ExodusPoint, and Citi. Flash-on-change, position flattening, smart defaults, and more."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://greatai.dev/blog/trading-ui-patterns/"><meta property="og:title" content="Trading UI Patterns: What 8 Years in Hedge Funds Taught Me"><meta property="og:description" content="Practical UI patterns from building trading systems at Millennium, ExodusPoint, and Citi. Flash-on-change, position flattening, smart defaults, and more."><meta property="og:image" content="https://greatai.dev/_astro/blog-placeholder-1.Bx0Zcyzv.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://greatai.dev/blog/trading-ui-patterns/"><meta property="twitter:title" content="Trading UI Patterns: What 8 Years in Hedge Funds Taught Me"><meta property="twitter:description" content="Practical UI patterns from building trading systems at Millennium, ExodusPoint, and Citi. Flash-on-change, position flattening, smart defaults, and more."><meta property="twitter:image" content="https://greatai.dev/_astro/blog-placeholder-1.Bx0Zcyzv.jpg"><!-- Vercel Web Analytics --><vercel-analytics data-props="{}" data-params="{&#34;slug&#34;:&#34;trading-ui-patterns&#34;}" data-pathname="/blog/trading-ui-patterns/"></vercel-analytics> <script type="module">var f="@vercel/analytics",l="1.6.1",w=()=>{window.va||(window.va=function(...r){(window.vaq=window.vaq||[]).push(r)})};function d(){return typeof window<"u"}function u(){try{const e="production"}catch{}return"production"}function v(e="auto"){if(e==="auto"){window.vam=u();return}window.vam=e}function m(){return(d()?window.vam:u())||"production"}function c(){return m()==="development"}function b(e,r){if(!e||!r)return e;let n=e;try{const t=Object.entries(r);for(const[a,i]of t)if(!Array.isArray(i)){const o=s(i);o.test(n)&&(n=n.replace(o,`/[${a}]`))}for(const[a,i]of t)if(Array.isArray(i)){const o=s(i.join("/"));o.test(n)&&(n=n.replace(o,`/[...${a}]`))}return n}catch{return e}}function s(e){return new RegExp(`/${h(e)}(?=[/?#]|$)`)}function h(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function y(e){return e.scriptSrc?e.scriptSrc:c()?"https://va.vercel-scripts.com/v1/script.debug.js":e.basePath?`${e.basePath}/insights/script.js`:"/_vercel/insights/script.js"}function g(e={debug:!0}){var r;if(!d())return;v(e.mode),w(),e.beforeSend&&((r=window.va)==null||r.call(window,"beforeSend",e.beforeSend));const n=y(e);if(document.head.querySelector(`script[src*="${n}"]`))return;const t=document.createElement("script");t.src=n,t.defer=!0,t.dataset.sdkn=f+(e.framework?`/${e.framework}`:""),t.dataset.sdkv=l,e.disableAutoTrack&&(t.dataset.disableAutoTrack="1"),e.endpoint?t.dataset.endpoint=e.endpoint:e.basePath&&(t.dataset.endpoint=`${e.basePath}/insights`),e.dsn&&(t.dataset.dsn=e.dsn),t.onerror=()=>{const a=c()?"Please check if any ad blockers are enabled and try again.":"Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information.";console.log(`[Vercel Web Analytics] Failed to load script from ${n}. ${a}`)},c()&&e.debug===!1&&(t.dataset.debug="false"),document.head.appendChild(t)}function p({route:e,path:r}){var n;(n=window.va)==null||n.call(window,"pageview",{route:e,path:r})}function k(){try{return}catch{}}customElements.define("vercel-analytics",class extends HTMLElement{constructor(){super();try{const r=JSON.parse(this.dataset.props??"{}"),n=JSON.parse(this.dataset.params??"{}");g({...r,disableAutoTrack:!0,framework:"astro",basePath:k(),beforeSend:window.webAnalyticsBeforeSend});const t=this.dataset.pathname;p({route:b(t??"",n),path:t})}catch(r){throw new Error(`Failed to parse WebAnalytics properties: ${r}`)}}});</script><!-- JSON-LD Structured Data --><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"greatai.dev","url":"https://greatai.dev/","author":{"@type":"Person","name":"Alexander Primak","url":"https://www.linkedin.com/in/alexander-primak/"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Trading UI Patterns: What 8 Years in Hedge Funds Taught Me","description":"Practical UI patterns from building trading systems at Millennium, ExodusPoint, and Citi. Flash-on-change, position flattening, smart defaults, and more.","image":"https://greatai.dev/_astro/blog-placeholder-1.Bx0Zcyzv.jpg","url":"https://greatai.dev/blog/trading-ui-patterns/","datePublished":"2026-01-14T05:00:00.000Z","dateModified":"2026-01-14T05:00:00.000Z","author":{"@type":"Person","name":"Alexander Primak","url":"https://www.linkedin.com/in/alexander-primak/"},"publisher":{"@type":"Organization","name":"greatai.dev","url":"https://greatai.dev/"}}</script><link rel="stylesheet" href="/_astro/_slug_.fUn9mpYj.css">
+<link rel="stylesheet" href="/_astro/_slug_.BTgtDMgm.css"></head> <body data-astro-cid-bvzihdzo> <header data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <a href="/" class="logo-link" data-astro-cid-3ef6ksr2> <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="greatai.dev" data-astro-cid-3ef6ksr2> <text x="0" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" class="logo-text" data-astro-cid-3ef6ksr2>great</text> <text x="40" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" class="logo-text" data-astro-cid-3ef6ksr2>AI</text> <text x="62" y="18" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="400" class="logo-text-muted" data-astro-cid-3ef6ksr2>.dev</text> </svg> </a> <div class="internal-links" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> Home </a>  <a href="/blog" class="active" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> Blog </a>  <a href="/projects" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> Products </a>  <a href="/about" data-astro-cid-3ef6ksr2="true" data-astro-cid-eimmu3lg> About </a>  </div> <div class="right-links" data-astro-cid-3ef6ksr2> <button id="theme-toggle" type="button" aria-label="Toggle dark mode" data-astro-cid-x3pjskd3> <svg class="sun-icon" viewBox="0 0 24 24" width="20" height="20" data-astro-cid-x3pjskd3> <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z" data-astro-cid-x3pjskd3></path> </svg> <svg class="moon-icon" viewBox="0 0 24 24" width="20" height="20" data-astro-cid-x3pjskd3> <path fill="currentColor" d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z" data-astro-cid-x3pjskd3></path> </svg> </button>  <script>
+	document.getElementById('theme-toggle')?.addEventListener('click', () => {
+		const element = document.documentElement;
+		element.classList.toggle('dark');
+		const isDark = element.classList.contains('dark');
+		localStorage.setItem('theme', isDark ? 'dark' : 'light');
+	});
+</script> <div class="social-links" data-astro-cid-3ef6ksr2> <a href="https://www.linkedin.com/in/alexander-primak/" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Connect on LinkedIn</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://twitter.com/alprimak" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Follow on Twitter</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://github.com/alprimak" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>View GitHub profile</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-3ef6ksr2></path></svg> </a> </div> </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <a href="/blog" class="back-link" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>←</span> Back to blog
+</a> <div class="hero-image" data-astro-cid-bvzihdzo>  </div> <header class="article-header" data-astro-cid-bvzihdzo> <div class="article-meta" data-astro-cid-bvzihdzo> <span class="date" data-astro-cid-bvzihdzo> <time datetime="2026-01-14T05:00:00.000Z"> Jan 14, 2026 </time> </span> <div class="tags" data-astro-cid-bvzihdzo> <span class="tag" data-astro-cid-bvzihdzo>trading</span><span class="tag" data-astro-cid-bvzihdzo>performance</span><span class="tag" data-astro-cid-bvzihdzo>ui</span><span class="tag" data-astro-cid-bvzihdzo>react</span><span class="tag" data-astro-cid-bvzihdzo>finance</span> </div> </div> <h1 data-astro-cid-bvzihdzo>Trading UI Patterns: What 8 Years in Hedge Funds Taught Me</h1> <p class="description" data-astro-cid-bvzihdzo>Practical UI patterns from building trading systems at Millennium, ExodusPoint, and Citi. Flash-on-change, position flattening, smart defaults, and more.</p>  </header> <div class="content" data-astro-cid-bvzihdzo>  <p>Most frontend developers never touch trading software. When they do, they bring patterns from e-commerce and social apps — patterns that fall apart when milliseconds matter and wrong data costs millions.</p>
+<p>After 8 years building trading UIs at hedge funds (Millennium, ExodusPoint) and banks (Citi), I’ve collected a set of patterns that actually work. Not theory. Battle-tested solutions to problems you’ll hit the moment you wire up a real-time price feed.</p>
+<h2 id="pattern-1-flash-on-change-not-on-render">Pattern 1: Flash on Change, Not on Render</h2>
+<p>The most common mistake in trading UIs: highlighting cells on every render.</p>
+<p><strong>The wrong way:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> PriceCell</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">previousValue</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> changed</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> value </span><span style="color:#F97583">!==</span><span style="color:#E1E4E8"> previousValue;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">td</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{changed </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> 'flash'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">}></span></span>
+<span class="line"><span style="color:#E1E4E8">      {value}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">td</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>This flashes when the component re-renders — even if the price didn’t actually change. Re-parent a component? Flash. Update an unrelated prop? Flash. Users learn to ignore it.</p>
+<p><strong>The right way:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> PriceCell</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> prevRef</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useRef</span><span style="color:#E1E4E8">(value);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">flash</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setFlash</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#9ECBFF">'up'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'down'</span><span style="color:#F97583"> |</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">>(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (value </span><span style="color:#F97583">!==</span><span style="color:#E1E4E8"> prevRef.current) {</span></span>
+<span class="line"><span style="color:#B392F0">      setFlash</span><span style="color:#E1E4E8">(value </span><span style="color:#F97583">></span><span style="color:#E1E4E8"> prevRef.current </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> 'up'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> 'down'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      prevRef.current </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> value;</span></span>
+<span class="line"><span style="color:#F97583">      const</span><span style="color:#79B8FF"> timer</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setTimeout</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setFlash</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">null</span><span style="color:#E1E4E8">), </span><span style="color:#79B8FF">300</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#B392F0"> clearTimeout</span><span style="color:#E1E4E8">(timer);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [value]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">td</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{flash </span><span style="color:#F97583">?</span><span style="color:#9ECBFF"> `flash-${</span><span style="color:#E1E4E8">flash</span><span style="color:#9ECBFF">}`</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">}></span></span>
+<span class="line"><span style="color:#E1E4E8">      {value}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">td</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Compare against the previous <em>value</em>, not the previous render. Flash only when the underlying data changes, with direction (green up, red down).</p>
+<p><strong>Pro tip:</strong> Debounce rapid updates. If a price ticks 10 times in 100ms, show one flash, not ten seizure-inducing blinks.</p>
+<h2 id="pattern-2-optimistic-position-updates">Pattern 2: Optimistic Position Updates</h2>
+<p>Traders need to know their position <em>now</em>, not in 200ms when the order confirmation comes back.</p>
+<p><strong>The problem:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Trader clicks "Buy 100"</span></span>
+<span class="line"><span>    → Order sent to server</span></span>
+<span class="line"><span>    → UI shows position: 0 (stale)</span></span>
+<span class="line"><span>    → 150ms passes...</span></span>
+<span class="line"><span>    → Confirmation arrives</span></span>
+<span class="line"><span>    → UI shows position: 100</span></span></code></pre>
+<p>That 150ms gap is dangerous. Traders might double-click, thinking the first order didn’t go through.</p>
+<p><strong>The solution: optimistic updates with reconciliation</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> useOptimisticPosition</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">serverPosition</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">pendingOrders</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setPendingOrders</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#B392F0">PendingOrder</span><span style="color:#E1E4E8">[]>([]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Display = server position + unconfirmed orders</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> displayPosition</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> serverPosition </span><span style="color:#F97583">+</span></span>
+<span class="line"><span style="color:#E1E4E8">    pendingOrders.</span><span style="color:#B392F0">reduce</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">sum</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">o</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> sum </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> o.quantity, </span><span style="color:#79B8FF">0</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> submitOrder</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">quantity</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> number</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> orderId</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> crypto.</span><span style="color:#B392F0">randomUUID</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    // Immediately update local state</span></span>
+<span class="line"><span style="color:#B392F0">    setPendingOrders</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">prev</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> [</span><span style="color:#F97583">...</span><span style="color:#E1E4E8">prev, { id: orderId, quantity }]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">      await</span><span style="color:#E1E4E8"> api.</span><span style="color:#B392F0">submitOrder</span><span style="color:#E1E4E8">({ quantity, clientOrderId: orderId });</span></span>
+<span class="line"><span style="color:#E1E4E8">    } </span><span style="color:#F97583">catch</span><span style="color:#E1E4E8"> (e) {</span></span>
+<span class="line"><span style="color:#6A737D">      // Remove from pending on failure</span></span>
+<span class="line"><span style="color:#B392F0">      setPendingOrders</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">prev</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> prev.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">o</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> o.id </span><span style="color:#F97583">!==</span><span style="color:#E1E4E8"> orderId));</span></span>
+<span class="line"><span style="color:#F97583">      throw</span><span style="color:#E1E4E8"> e;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // When server position updates, clear matching pending orders</span></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">    setPendingOrders</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">prev</span><span style="color:#F97583"> =></span></span>
+<span class="line"><span style="color:#E1E4E8">      prev.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">o</span><span style="color:#F97583"> =></span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">o.confirmedAt </span><span style="color:#F97583">||</span><span style="color:#E1E4E8"> Date.</span><span style="color:#B392F0">now</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> o.confirmedAt </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 5000</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    );</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [serverPosition]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> { displayPosition, submitOrder, hasPending: pendingOrders.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ></span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8"> };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Show a visual indicator (spinner, italic text) for unconfirmed quantity. Traders know it’s pending but can trust the total.</p>
+<h2 id="pattern-3-the-flatten-button-pattern">Pattern 3: The “Flatten” Button Pattern</h2>
+<p>Every position widget needs a “flatten” button — close the entire position with one click. Simple concept, tricky implementation.</p>
+<p><strong>Edge cases that will bite you:</strong></p>
+<ol>
+<li>
+<p><strong>Partial fills during flatten.</strong> You have 500 shares, click flatten, but only 300 get filled. Now you’re showing 0 (target) but actually holding 200.</p>
+</li>
+<li>
+<p><strong>Price moves during execution.</strong> Market order at $100, fills at $100.50. UI needs to reflect actual execution.</p>
+</li>
+<li>
+<p><strong>Multiple accounts.</strong> Trader thinks they’re flattening Account A but selected Account B.</p>
+</li>
+</ol>
+<p><strong>The pattern:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> FlattenButton</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">symbol</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">accountId</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">state</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setState</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#9ECBFF">'idle'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'confirming'</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> 'executing'</span><span style="color:#E1E4E8">>(</span><span style="color:#9ECBFF">'idle'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> position</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> usePosition</span><span style="color:#E1E4E8">(symbol, accountId);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#B392F0"> handleFlatten</span><span style="color:#F97583"> =</span><span style="color:#F97583"> async</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'idle'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">      setState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'confirming'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      return</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> (state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'confirming'</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">      setState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'executing'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">      try</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">        await</span><span style="color:#E1E4E8"> api.</span><span style="color:#B392F0">flattenPosition</span><span style="color:#E1E4E8">(symbol, accountId);</span></span>
+<span class="line"><span style="color:#E1E4E8">      } </span><span style="color:#F97583">finally</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#B392F0">        setState</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'idle'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (position </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// No position, no button</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">button</span></span>
+<span class="line"><span style="color:#B392F0">      onClick</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{handleFlatten}</span></span>
+<span class="line"><span style="color:#B392F0">      className</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'confirming'</span><span style="color:#F97583"> ?</span><span style="color:#9ECBFF"> 'danger-confirm'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> ''</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">      disabled</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'executing'</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    ></span></span>
+<span class="line"><span style="color:#E1E4E8">      {state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'idle'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#9ECBFF"> `Flatten ${</span><span style="color:#E1E4E8">position</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'confirming'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#9ECBFF"> `Confirm: Sell ${</span><span style="color:#E1E4E8">position</span><span style="color:#9ECBFF">}?`</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {state </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'executing'</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#9ECBFF"> 'Executing...'</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Key details:</strong></p>
+<ul>
+<li>Two-click confirmation (click once to arm, click again to fire)</li>
+<li>Show exact quantity being closed</li>
+<li>Disable during execution to prevent double-clicks</li>
+<li>Hide entirely when flat (no 0-position confusion)</li>
+</ul>
+<h2 id="pattern-4-smart-defaults-from-context">Pattern 4: Smart Defaults from Context</h2>
+<p>Traders work fast. Every field they have to fill out is friction. Smart defaults reduce errors and speed up workflows.</p>
+<p><strong>Default quantity from position:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// If closing, default to current position size</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> defaultQuantity</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> action </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'sell'</span><span style="color:#F97583"> ?</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">abs</span><span style="color:#E1E4E8">(position) </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> lastOrderSize;</span></span></code></pre>
+<p><strong>Default price from market:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// Aggressive: buy at ask, sell at bid</span></span>
+<span class="line"><span style="color:#6A737D">// Passive: buy at bid, sell at ask</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> defaultPrice</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> aggressive</span></span>
+<span class="line"><span style="color:#F97583">  ?</span><span style="color:#E1E4E8"> (side </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'buy'</span><span style="color:#F97583"> ?</span><span style="color:#E1E4E8"> quote.ask </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> quote.bid)</span></span>
+<span class="line"><span style="color:#F97583">  :</span><span style="color:#E1E4E8"> (side </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'buy'</span><span style="color:#F97583"> ?</span><span style="color:#E1E4E8"> quote.bid </span><span style="color:#F97583">:</span><span style="color:#E1E4E8"> quote.ask);</span></span></code></pre>
+<p><strong>Default account from last used:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> defaultAccount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> lastUsedAccount[symbol] </span><span style="color:#F97583">??</span><span style="color:#E1E4E8"> primaryAccount;</span></span></code></pre>
+<p><strong>Default time-in-force by order type:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> defaultTIF</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> orderType </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'market'</span><span style="color:#F97583"> ?</span><span style="color:#9ECBFF"> 'IOC'</span><span style="color:#F97583"> :</span><span style="color:#9ECBFF"> 'DAY'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>Audit your forms. If traders fill the same value 90% of the time, make it the default.</p>
+<h2 id="pattern-5-red-numbers-not-red-backgrounds">Pattern 5: Red Numbers, Not Red Backgrounds</h2>
+<p>Color theory for financial UIs is counterintuitive. Here’s what I’ve learned:</p>
+<p><strong>Bad:</strong> Red background for negative P&#x26;L</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.negative</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">background</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">#ff0000</span><span style="color:#E1E4E8">; </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">white</span><span style="color:#E1E4E8">; }</span></span></code></pre>
+<p>This is visually overwhelming and makes text hard to read. In a grid of 200 positions, 50 red backgrounds create visual chaos.</p>
+<p><strong>Good:</strong> Red text for negative, green text for positive</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.negative</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">#e74c3c</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#B392F0">.positive</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">#27ae60</span><span style="color:#E1E4E8">; }</span></span>
+<span class="line"><span style="color:#B392F0">.zero</span><span style="color:#E1E4E8"> { </span><span style="color:#79B8FF">color</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">#7f8c8d</span><span style="color:#E1E4E8">; }</span></span></code></pre>
+<p><strong>Better:</strong> Semantic color with intensity scaling</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> PnLCell</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">maxAbsValue</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> intensity</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">min</span><span style="color:#E1E4E8">(Math.</span><span style="color:#B392F0">abs</span><span style="color:#E1E4E8">(value) </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> maxAbsValue, </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> alpha</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 0.3</span><span style="color:#F97583"> +</span><span style="color:#E1E4E8"> (intensity </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 0.7</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Range: 0.3 to 1.0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> color</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> value </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#9ECBFF"> `rgba(39, 174, 96, ${</span><span style="color:#E1E4E8">alpha</span><span style="color:#9ECBFF">})`</span><span style="color:#6A737D">   // Green</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#E1E4E8"> value </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#F97583">    ?</span><span style="color:#9ECBFF"> `rgba(231, 76, 60, ${</span><span style="color:#E1E4E8">alpha</span><span style="color:#9ECBFF">})`</span><span style="color:#6A737D">   // Red</span></span>
+<span class="line"><span style="color:#F97583">    :</span><span style="color:#9ECBFF"> 'rgb(127, 140, 141)'</span><span style="color:#E1E4E8">;           </span><span style="color:#6A737D">// Gray</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">td</span><span style="color:#B392F0"> style</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{{ color }}>{</span><span style="color:#B392F0">formatCurrency</span><span style="color:#E1E4E8">(value)}&#x3C;/</span><span style="color:#85E89D">td</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Small losses are light red. Large losses are dark red. Users can scan and immediately spot outliers.</p>
+<h2 id="pattern-6-time-formatting-that-traders-actually-use">Pattern 6: Time Formatting that Traders Actually Use</h2>
+<p>Nobody in a trading room says “January 14th, 2026 at 2:35 PM Eastern Standard Time.”</p>
+<p><strong>What traders actually say:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scenario</th><th>Format</th><th>Example</th></tr></thead><tbody><tr><td>Same day</td><td>HH:mm:ss</td><td>14:35:22</td></tr><tr><td>Yesterday</td><td>”Yday” HH:mm</td><td>Yday 16:30</td></tr><tr><td>Same week</td><td>Day HH:mm</td><td>Mon 14:35</td></tr><tr><td>Same year</td><td>MMM DD</td><td>Jan 14</td></tr><tr><td>Historical</td><td>DD-MMM-YY</td><td>14-Jan-26</td></tr></tbody></table>
+<p><strong>Implementation:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> formatTradeTime</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">timestamp</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">now</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Date</span><span style="color:#E1E4E8">())</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> diffMs</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> now.</span><span style="color:#B392F0">getTime</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> timestamp.</span><span style="color:#B392F0">getTime</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> diffDays</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(diffMs </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">1000</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 60</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 60</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 24</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (diffDays </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> format</span><span style="color:#E1E4E8">(timestamp, </span><span style="color:#9ECBFF">'HH:mm:ss'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (diffDays </span><span style="color:#F97583">===</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#9ECBFF"> `Yday ${</span><span style="color:#B392F0">format</span><span style="color:#9ECBFF">(</span><span style="color:#E1E4E8">timestamp</span><span style="color:#9ECBFF">, </span><span style="color:#9ECBFF">'HH:mm'</span><span style="color:#9ECBFF">)</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (diffDays </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 7</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> format</span><span style="color:#E1E4E8">(timestamp, </span><span style="color:#9ECBFF">'EEE HH:mm'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (timestamp.</span><span style="color:#B392F0">getFullYear</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">===</span><span style="color:#E1E4E8"> now.</span><span style="color:#B392F0">getFullYear</span><span style="color:#E1E4E8">()) {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#B392F0"> format</span><span style="color:#E1E4E8">(timestamp, </span><span style="color:#9ECBFF">'MMM dd'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> format</span><span style="color:#E1E4E8">(timestamp, </span><span style="color:#9ECBFF">'dd-MMM-yy'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Also: <strong>always show timezone indicator</strong> somewhere visible. A trader in NYC looking at a fill time needs to know if it’s Eastern or UTC.</p>
+<h2 id="pattern-7-keyboard-first-mouse-second">Pattern 7: Keyboard-First, Mouse-Second</h2>
+<p>Professional traders live on the keyboard. Every mouse movement is wasted time.</p>
+<p><strong>Essential keyboard shortcuts:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td><code>B</code></td><td>Buy order entry</td></tr><tr><td><code>S</code></td><td>Sell order entry</td></tr><tr><td><code>F</code></td><td>Flatten position</td></tr><tr><td><code>C</code></td><td>Cancel all orders</td></tr><tr><td><code>Esc</code></td><td>Close modal/cancel entry</td></tr><tr><td><code>Enter</code></td><td>Submit order</td></tr><tr><td><code>Tab</code></td><td>Next field</td></tr><tr><td><code>↑↓</code></td><td>Increment/decrement quantity</td></tr></tbody></table>
+<p><strong>Implementation pattern:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#B392F0">useHotkeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'b'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#B392F0"> openOrderEntry</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'buy'</span><span style="color:#E1E4E8">), { enabled: </span><span style="color:#F97583">!</span><span style="color:#E1E4E8">modalOpen });</span></span>
+<span class="line"><span style="color:#B392F0">useHotkeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'s'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#B392F0"> openOrderEntry</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'sell'</span><span style="color:#E1E4E8">), { enabled: </span><span style="color:#F97583">!</span><span style="color:#E1E4E8">modalOpen });</span></span>
+<span class="line"><span style="color:#B392F0">useHotkeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'f'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#B392F0"> confirmFlatten</span><span style="color:#E1E4E8">(), { enabled: hasPosition </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">modalOpen });</span></span>
+<span class="line"><span style="color:#B392F0">useHotkeys</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'escape'</span><span style="color:#E1E4E8">, () </span><span style="color:#F97583">=></span><span style="color:#B392F0"> closeModal</span><span style="color:#E1E4E8">(), { enabled: modalOpen });</span></span></code></pre>
+<p><strong>Critical:</strong> Hotkeys should be disabled during text input and when modals are open. Nothing worse than typing “Best Buy” in a search box and triggering 4 buy orders.</p>
+<h2 id="pattern-8-the-working-orders-indicator">Pattern 8: The “Working Orders” Indicator</h2>
+<p>Traders need to know at a glance: do I have open orders on this symbol?</p>
+<p><strong>The pattern:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>┌──────────────────────────────────────┐</span></span>
+<span class="line"><span>│ AAPL  │ 185.42  │ ▲500 │ 3 working │</span></span>
+<span class="line"><span>│ MSFT  │ 401.23  │ -200 │           │</span></span>
+<span class="line"><span>│ GOOGL │ 175.89  │ ▲150 │ 1 working │</span></span>
+<span class="line"><span>└──────────────────────────────────────┘</span></span></code></pre>
+<p>The “working” indicator shows:</p>
+<ul>
+<li>Order count (1, 2, 3…)</li>
+<li>Direction (buy orders = green dot, sell = red)</li>
+<li>Hover/click to expand details</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> WorkingOrdersIndicator</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">symbol</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> orders</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> useWorkingOrders</span><span style="color:#E1E4E8">(symbol);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (orders.</span><span style="color:#79B8FF">length</span><span style="color:#F97583"> ===</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> buyCount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> orders.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">o</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> o.side </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'buy'</span><span style="color:#E1E4E8">).</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> sellCount</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> orders.</span><span style="color:#B392F0">filter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">o</span><span style="color:#F97583"> =></span><span style="color:#E1E4E8"> o.side </span><span style="color:#F97583">===</span><span style="color:#9ECBFF"> 'sell'</span><span style="color:#E1E4E8">).</span><span style="color:#79B8FF">length</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"working-indicator"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {buyCount </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 0</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"buy-dot"</span><span style="color:#E1E4E8">>{buyCount}&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>}</span></span>
+<span class="line"><span style="color:#E1E4E8">      {sellCount </span><span style="color:#F97583">></span><span style="color:#79B8FF"> 0</span><span style="color:#F97583"> &#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"sell-dot"</span><span style="color:#E1E4E8">>{sellCount}&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>This prevents the “I forgot I had a limit order” surprise fill.</p>
+<h2 id="pattern-9-error-states-that-dont-panic-users">Pattern 9: Error States that Don’t Panic Users</h2>
+<p>Order rejections happen. The UI shouldn’t make it feel like the world is ending.</p>
+<p><strong>Bad:</strong> Modal popup with red background and “ERROR!” in bold</p>
+<p><strong>Good:</strong> Inline toast with specific action</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> OrderRejection</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">rejection</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> actions</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#9ECBFF">    'INSUFFICIENT_BUYING_POWER'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'Reduce quantity or add funds'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'SYMBOL_HALTED'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'Trading halted — wait for resume'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'OUTSIDE_MARKET_HOURS'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'Use limit order or wait for open'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">    'POSITION_LIMIT_EXCEEDED'</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">'Close existing position first'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#79B8FF">Toast</span><span style="color:#B392F0"> variant</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"warning"</span><span style="color:#B392F0"> duration</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">{</span><span style="color:#79B8FF">5000</span><span style="color:#E1E4E8">}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">strong</span><span style="color:#E1E4E8">>{rejection.symbol}&#x3C;/</span><span style="color:#85E89D">strong</span><span style="color:#E1E4E8">>: {rejection.message}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"action-hint"</span><span style="color:#E1E4E8">>{actions[rejection.code]}&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#79B8FF">Toast</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Key principles:</strong></p>
+<ul>
+<li>Don’t block the entire UI for one rejection</li>
+<li>Show <em>which</em> order failed (symbol + side + quantity)</li>
+<li>Suggest actionable next steps</li>
+<li>Auto-dismiss after a few seconds (they saw it)</li>
+</ul>
+<h2 id="pattern-10-data-staleness-indicators">Pattern 10: Data Staleness Indicators</h2>
+<p>Real-time data isn’t always real-time. Network hiccups, server lag, exchange delays — traders need to know when data is stale.</p>
+<p><strong>The pattern:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> StaleDataIndicator</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">lastUpdate</span><span style="color:#E1E4E8"> }) {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#79B8FF">now</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">setNow</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#B392F0"> useState</span><span style="color:#E1E4E8">(Date.</span><span style="color:#B392F0">now</span><span style="color:#E1E4E8">());</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">    const</span><span style="color:#79B8FF"> interval</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> setInterval</span><span style="color:#E1E4E8">(() </span><span style="color:#F97583">=></span><span style="color:#B392F0"> setNow</span><span style="color:#E1E4E8">(Date.</span><span style="color:#B392F0">now</span><span style="color:#E1E4E8">()), </span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#F97583">=></span><span style="color:#B392F0"> clearInterval</span><span style="color:#E1E4E8">(interval);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> staleness</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> now </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> lastUpdate.</span><span style="color:#B392F0">getTime</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (staleness </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 5000</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">return</span><span style="color:#79B8FF"> null</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Fresh</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (staleness </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 30000</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"stale-warning"</span><span style="color:#E1E4E8">>⚠ {Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(staleness</span><span style="color:#F97583">/</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">)}s ago&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#85E89D">span</span><span style="color:#B392F0"> className</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"stale-critical"</span><span style="color:#E1E4E8">>⛔ Data stale ({Math.</span><span style="color:#B392F0">floor</span><span style="color:#E1E4E8">(staleness</span><span style="color:#F97583">/</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">)}s)&#x3C;/</span><span style="color:#85E89D">span</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Thresholds (adjust per use case):</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Staleness</th><th>For prices</th><th>For positions</th><th>For orders</th></tr></thead><tbody><tr><td>&#x3C; 5s</td><td>Fresh</td><td>Fresh</td><td>Fresh</td></tr><tr><td>5-30s</td><td>Warning</td><td>Warning</td><td>Critical</td></tr><tr><td>> 30s</td><td>Critical</td><td>Critical</td><td>Dead</td></tr></tbody></table>
+<p>A trader making decisions on 60-second-old prices is gambling, not trading.</p>
+<h2 id="putting-it-together">Putting It Together</h2>
+<p>These patterns aren’t just nice-to-haves. Each one addresses a real failure mode I’ve seen cause trading errors, user frustration, or outright financial loss.</p>
+<p><strong>The core principles:</strong></p>
+<ol>
+<li><strong>Trust the display.</strong> If it says 500 shares, there should be 500 shares.</li>
+<li><strong>Speed kills (in a good way).</strong> Sub-100ms latency, keyboard-first, smart defaults.</li>
+<li><strong>Errors are normal.</strong> Don’t panic the user. Show what failed and how to fix it.</li>
+<li><strong>Context matters.</strong> Time formats, color intensity, staleness thresholds — all depend on the workflow.</li>
+</ol>
+<p>If you’re building trading UIs and want a grid that handles these patterns out of the box — high-frequency updates, flash-on-change, keyboard navigation — that’s exactly why I’m building <a href="https://grid.askturret.com">AskTurret Grid</a>. It’s designed for trading scenarios where ag-grid and DataGrid fall short.</p>
+<hr>
+<p><em>Got questions about trading UI patterns? Find me on <a href="https://www.linkedin.com/in/alexander-primak/">LinkedIn</a> or check out more at <a href="/">greatai.dev</a>.</em></p>  </div> <div class="reactions" data-slug="trading-ui-patterns" data-astro-cid-6vafa5kw> <button class="reaction-btn like-btn" data-type="like" aria-label="Like this article" data-astro-cid-6vafa5kw> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6vafa5kw> <path d="M7 10v12" data-astro-cid-6vafa5kw></path> <path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" data-astro-cid-6vafa5kw></path> </svg> <span class="like-count" data-astro-cid-6vafa5kw>...</span> </button> <button class="reaction-btn dislike-btn" data-type="dislike" aria-label="Dislike this article" data-astro-cid-6vafa5kw> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-6vafa5kw> <path d="M17 14V2" data-astro-cid-6vafa5kw></path> <path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22h0a3.13 3.13 0 0 1-3-3.88Z" data-astro-cid-6vafa5kw></path> </svg> </button> </div>  <script type="module">document.addEventListener("astro:page-load",()=>{document.querySelectorAll(".reactions").forEach(s=>{const o=s.getAttribute("data-slug");if(!o)return;const t=s.querySelector(".like-btn"),i=s.querySelector(".dislike-btn"),l=s.querySelector(".like-count"),d=`reaction:${o}`,n=localStorage.getItem(d);n==="like"?t.classList.add("voted"):n==="dislike"&&i.classList.add("voted"),fetch(`/api/reactions/${o}`).then(e=>e.json()).then(e=>{l.textContent=e.likes?.toString()??"0"}).catch(()=>{l.textContent="0"});const r=async e=>{if(n)return;const c=e==="like"?t:i;c.disabled=!0;try{const a=await fetch(`/api/reactions/${o}`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type:e})});if(a.ok&&(localStorage.setItem(d,e),c.classList.add("voted"),t.disabled=!0,i.disabled=!0,e==="like")){const u=await a.json();u.likes!==void 0&&(l.textContent=u.likes.toString())}}catch(a){console.error("Failed to submit reaction:",a),c.disabled=!1}};t.addEventListener("click",()=>r("like")),i.addEventListener("click",()=>r("dislike")),n&&(t.disabled=!0,i.disabled=!0)})});</script> </div> </article> </main> <footer data-astro-cid-sz7xmlte>
+&copy; 2026 Alex Primak (<a href="https://twitter.com/alprimak" target="_blank" data-astro-cid-sz7xmlte>@alprimak</a>). All rights reserved.
+<div class="social-links" data-astro-cid-sz7xmlte> <a href="https://www.linkedin.com/in/alexander-primak/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Connect on LinkedIn</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte><path fill="currentColor" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://twitter.com/alprimak" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Follow on Twitter</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte><path fill="currentColor" d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com/alprimak" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>View GitHub profile</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </body></html>
