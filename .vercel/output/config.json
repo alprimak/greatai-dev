@@ -39,6 +39,10 @@
 			"dest": "/tools"
 		},
 		{
+			"src": "^/tools/base64/?(?:/__data.json)?$",
+			"dest": "/tools/base64"
+		},
+		{
 			"src": "^/tools/code-explainer/?(?:/__data.json)?$",
 			"dest": "/tools/code-explainer"
 		},
@@ -51,8 +55,16 @@
 			"dest": "/tools/json-formatter"
 		},
 		{
+			"src": "^/tools/prompt-optimizer/?(?:/__data.json)?$",
+			"dest": "/tools/prompt-optimizer"
+		},
+		{
 			"src": "^/tools/regex-tester/?(?:/__data.json)?$",
 			"dest": "/tools/regex-tester"
+		},
+		{
+			"src": "^/tools/timestamp/?(?:/__data.json)?$",
+			"dest": "/tools/timestamp"
 		},
 		{
 			"src": "^/tools/token-calculator/?(?:/__data.json)?$",

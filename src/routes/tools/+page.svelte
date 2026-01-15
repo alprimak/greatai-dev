@@ -17,6 +17,14 @@
 			rateLimit: '5 requests/hour'
 		},
 		{
+			name: 'Prompt Optimizer',
+			description: 'Transform vague prompts into effective AI instructions with expert analysis.',
+			href: '/tools/prompt-optimizer',
+			icon: 'optimize',
+			status: 'live',
+			rateLimit: '5 requests/hour'
+		},
+		{
 			name: 'Token Calculator',
 			description: 'Count tokens for Claude, GPT-4, and other models. Real-time counting as you type.',
 			href: '/tools/token-calculator',
@@ -41,11 +49,20 @@
 			rateLimit: '5 AI explanations/hour'
 		},
 		{
-			name: 'Prompt Optimizer',
-			description: 'Improve your prompts for better AI responses.',
-			href: '/tools/prompt-optimizer',
-			icon: 'optimize',
-			status: 'coming-soon'
+			name: 'Base64 Encoder',
+			description: 'Encode and decode Base64 strings. Supports URL-safe encoding and file uploads.',
+			href: '/tools/base64',
+			icon: 'base64',
+			status: 'live',
+			rateLimit: 'Unlimited'
+		},
+		{
+			name: 'Timestamp Converter',
+			description: 'Convert Unix timestamps to human-readable dates and vice versa.',
+			href: '/tools/timestamp',
+			icon: 'timestamp',
+			status: 'live',
+			rateLimit: 'Unlimited'
 		}
 	];
 </script>
@@ -110,6 +127,18 @@
 					{:else if tool.icon === 'optimize'}
 						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 							<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+						</svg>
+					{:else if tool.icon === 'base64'}
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M4 7V4h16v3"/>
+							<path d="M9 20H4v-3"/>
+							<path d="M15 20h5v-3"/>
+							<path d="M12 4v16"/>
+						</svg>
+					{:else if tool.icon === 'timestamp'}
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<circle cx="12" cy="12" r="10"/>
+							<polyline points="12 6 12 12 16 14"/>
 						</svg>
 					{/if}
 				</div>
