@@ -15,8 +15,24 @@
 			"dest": "/"
 		},
 		{
+			"src": "^/\\.well-known/mcp\\.json/?(?:/__data.json)?$",
+			"dest": "/.well-known/mcp.json"
+		},
+		{
 			"src": "^/about/?(?:/__data.json)?$",
 			"dest": "/about"
+		},
+		{
+			"src": "^/api/mcp/?(?:/__data.json)?$",
+			"dest": "/api/mcp"
+		},
+		{
+			"src": "^/api/mcp/invoke/?(?:/__data.json)?$",
+			"dest": "/api/mcp/invoke"
+		},
+		{
+			"src": "^/api/mcp/tools/?(?:/__data.json)?$",
+			"dest": "/api/mcp/tools"
 		},
 		{
 			"src": "^/api/reactions/([^/]+?)/?(?:/__data.json)?$",
