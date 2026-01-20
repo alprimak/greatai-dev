@@ -2,6 +2,7 @@
 title: 'From SSH Sessions to Autonomous Agent Teams: Local Orchestration with Unix Primitives'
 description: 'How I evolved from Tailscale + Termux remote access to running 6 autonomous AI agents using file-based IPC, systemd, and cron — no cloud APIs required.'
 pubDate: 'Jan 20 2026'
+updatedDate: 'Jan 20 2026'
 tags: ['ai', 'agents', 'claude', 'unix', 'automation']
 ---
 
