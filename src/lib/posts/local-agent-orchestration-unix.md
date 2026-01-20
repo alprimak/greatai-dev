@@ -238,14 +238,16 @@ The `gh` CLI is perfect for agents — scriptable, authenticated, works everywhe
 
 ## What's Next: Operum
 
-This local orchestration pattern became the foundation for [Operum](https://operum.ai) — a desktop app that packages all of this into a clean UI with:
+This local orchestration pattern inspired [Operum](https://operum.ai) — a desktop app that brings agent team management to a clean UI:
 
 - Visual agent status dashboard
 - Team templates (PM, Engineer, Tester, etc.)
 - GitHub pipeline integration
-- One-click agent deployment
+- Multi-device session sync
 
-But the core architecture remains: **files for IPC, systemd for services, cron for scheduling**. Unix primitives that have worked for 50 years.
+The desktop app uses Rust-based synchronization primitives (built on Tauri) for real-time responsiveness. But the Unix philosophy remains at the heart of the design: **simple primitives, composable tools, text as the universal interface**.
+
+For cloud deployments, the file-based IPC pattern scales naturally — containers can share volumes, and the same trigger/response mechanism works across distributed systems.
 
 ## Try It Yourself
 
