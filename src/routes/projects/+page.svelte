@@ -1,4 +1,6 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
+
 	const products = [
 		{
 			name: 'AskTurret',
@@ -19,10 +21,10 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Products | greatAI.dev</title>
-	<meta name="description" content="Products and tools I've built for finance and data-intensive applications." />
-</svelte:head>
+<SEO
+	title="Products"
+	description="Products and tools built for finance and data-intensive applications - AskTurret AI trading terminal and high-performance data grid."
+/>
 
 <div class="products-page">
 	<header class="page-header">

@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { SITE_TITLE } from '$lib/config';
+	import { SITE_URL, AUTHOR } from '$lib/config';
+	import SEO from '$lib/components/SEO.svelte';
 	import Reactions from '$lib/components/Reactions.svelte';
 
 	let { data } = $props();
@@ -11,11 +12,44 @@
 			day: 'numeric'
 		});
 	}
+
+	// JSON-LD structured data for the article
+	const jsonLd = $derived({
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: data.metadata.title,
+		description: data.metadata.description,
+		author: {
+			'@type': 'Person',
+			name: AUTHOR,
+			url: `${SITE_URL}/about`
+		},
+		publisher: {
+			'@type': 'Person',
+			name: AUTHOR,
+			url: SITE_URL
+		},
+		datePublished: data.metadata.pubDate,
+		dateModified: data.metadata.updatedDate || data.metadata.pubDate,
+		mainEntityOfPage: {
+			'@type': 'WebPage',
+			'@id': `${SITE_URL}/blog/${data.slug}`
+		},
+		keywords: data.metadata.tags?.join(', ') || ''
+	});
 </script>
 
+<SEO
+	title={data.metadata.title}
+	description={data.metadata.description}
+	type="article"
+	publishedTime={data.metadata.pubDate}
+	modifiedTime={data.metadata.updatedDate}
+	tags={data.metadata.tags}
+/>
+
 <svelte:head>
-	<title>{data.metadata.title} | {SITE_TITLE}</title>
-	<meta name="description" content={data.metadata.description} />
+	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
 </svelte:head>
 
 <div class="blog-post">

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
+
 	const tools = [
 		{
 			name: 'Code Simplifier',
@@ -67,10 +69,10 @@
 	];
 </script>
 
-<svelte:head>
-	<title>AI Tools | greatAI.dev</title>
-	<meta name="description" content="Free AI developer tools: code simplifier, token calculator, model comparison, and more." />
-</svelte:head>
+<SEO
+	title="AI Developer Tools"
+	description="Free AI developer tools: code simplifier, token calculator, JSON formatter, regex tester, and more. No signup required."
+/>
 
 <div class="tools-page">
 	<header class="hero">

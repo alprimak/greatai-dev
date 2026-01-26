@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { AUTHOR, SOCIAL_LINKS } from '$lib/config';
+	import SEO from '$lib/components/SEO.svelte';
 </script>
 
-<svelte:head>
-	<title>About | greatAI.dev</title>
-	<meta name="description" content="About {AUTHOR} - Software engineer specializing in AI and high-performance data infrastructure for finance." />
-</svelte:head>
+<SEO
+	title="About"
+	description="About {AUTHOR} - Software engineer specializing in AI and high-performance data infrastructure for finance."
+/>
 
 <div class="about-page">
 	<section class="hero">

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { SITE_TITLE, SITE_DESCRIPTION } from '$lib/config';
+	import SEO from '$lib/components/SEO.svelte';
 
 	let { data } = $props();
 
@@ -12,10 +13,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{SITE_TITLE}</title>
-	<meta name="description" content={SITE_DESCRIPTION} />
-</svelte:head>
+<SEO title={SITE_TITLE} description={SITE_DESCRIPTION} />
 
 <div class="home-page">
 	<section class="hero">
