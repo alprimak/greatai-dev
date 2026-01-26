@@ -28,6 +28,7 @@
 		"@vercel/kv": "^3.0.0",
 		"mdsvex": "^0.12.6",
 		"monaco-editor": "^0.55.1",
+		"posthog-js": "^1.335.2",
 		"tailwindcss": "^4.1.18"
 	}
 }
