@@ -1,7 +1,7 @@
 ---
 title: 'Introducing operum.ai: AI Agent Orchestration for Builders'
 description: '6 specialized AI agents. One orchestrator. Ship products faster with autonomous development, marketing, and community workflows.'
-pubDate: 'Jan 31 2026'
+pubDate: 'Jan 30 2026'
 tags: ['ai', 'agents', 'orchestration', 'operum', 'automation', 'product']
 ---
 

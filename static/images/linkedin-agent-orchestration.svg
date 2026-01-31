@@ -1,0 +1,69 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="600" y="80" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#f8fafc">6 Autonomous AI Agents</text>
+  <text x="600" y="130" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#94a3b8">Running locally for $20/month</text>
+
+  <!-- Agent boxes -->
+  <!-- PM -->
+  <rect x="500" y="170" width="200" height="60" rx="8" fill="#3b82f6" opacity="0.9"/>
+  <text x="600" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#fff">PM Agent</text>
+
+  <!-- Connector lines from PM -->
+  <line x1="520" y1="230" x2="180" y2="290" stroke="#475569" stroke-width="2"/>
+  <line x1="560" y1="230" x2="400" y2="290" stroke="#475569" stroke-width="2"/>
+  <line x1="640" y1="230" x2="800" y2="290" stroke="#475569" stroke-width="2"/>
+  <line x1="680" y1="230" x2="1020" y2="290" stroke="#475569" stroke-width="2"/>
+
+  <!-- Row of agents -->
+  <!-- Architect -->
+  <rect x="80" y="290" width="160" height="50" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+  <text x="160" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#e2e8f0">Architect</text>
+
+  <!-- Engineer -->
+  <rect x="280" y="290" width="160" height="50" rx="6" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="360" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#e2e8f0">Engineer</text>
+
+  <!-- Tester -->
+  <rect x="720" y="290" width="160" height="50" rx="6" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+  <text x="800" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#e2e8f0">Tester</text>
+
+  <!-- Marketing -->
+  <rect x="920" y="290" width="160" height="50" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+  <text x="1000" y="322" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#e2e8f0">Marketing</text>
+
+  <!-- Unix primitives section -->
+  <text x="600" y="410" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#64748b">Powered by Unix Primitives</text>
+
+  <!-- Three boxes for primitives -->
+  <rect x="150" y="440" width="220" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="260" y="470" text-anchor="middle" font-family="monospace" font-size="18" fill="#3b82f6">triggers/*.trigger</text>
+  <text x="260" y="495" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8">File-based IPC</text>
+
+  <rect x="490" y="440" width="220" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="600" y="470" text-anchor="middle" font-family="monospace" font-size="18" fill="#8b5cf6">systemd --user</text>
+  <text x="600" y="495" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8">Persistent services</text>
+
+  <rect x="830" y="440" width="220" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="940" y="470" text-anchor="middle" font-family="monospace" font-size="18" fill="#22c55e">cron</text>
+  <text x="940" y="495" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#94a3b8">Scheduled tasks</text>
+
+  <!-- Bottom tagline -->
+  <text x="600" y="580" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#64748b">No cloud APIs. No per-token costs. Just your Claude subscription.</text>
+
+  <!-- greatai.dev watermark -->
+  <text x="1150" y="610" text-anchor="end" font-family="system-ui, sans-serif" font-size="14" fill="#475569">greatai.dev</text>
+</svg>

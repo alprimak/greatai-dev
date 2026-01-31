@@ -5,7 +5,7 @@
 
 <SEO
 	title="About"
-	description="About {AUTHOR} - Software engineer specializing in AI and high-performance data infrastructure for finance."
+	description="About {AUTHOR} - Building operum.ai (AI agent orchestration) and AskTurret (trading tools). 17+ years in hedge fund trading systems."
 />
 
 <div class="about-page">
@@ -21,7 +21,7 @@
 		<div class="hero-content">
 			<h1><span class="prompt">$</span> whoami</h1>
 			<p class="tagline">
-				I'm {AUTHOR}, a software engineer specializing in high-performance data infrastructure and AI systems for finance.
+				I'm {AUTHOR} — building AI agent systems and trading tools. 17+ years in hedge fund tech, now focused on operum.ai and AskTurret.
 			</p>
 		</div>
 	</section>
@@ -35,9 +35,9 @@
 			</div>
 			<h2><span class="accent">#</span> What I Build</h2>
 			<p>
-				Software where performance and correctness both matter. Currently focused on
-				<a href="https://askturret.com">AskTurret</a> — an AI-powered trading terminal with natural language
-				interface for market data and analytics.
+				Currently building <a href="https://operum.ai">operum.ai</a> — an AI agent orchestrator with 6 specialized agents
+				that ship products autonomously. Also building <a href="https://askturret.com">AskTurret</a> — trading tools
+				including a high-performance data grid designed to beat ag-grid in trading scenarios.
 			</p>
 		</div>
 
@@ -50,8 +50,9 @@
 			</div>
 			<h2><span class="accent">#</span> Background</h2>
 			<p>
-				Years of experience building trading systems, analytics platforms, and data-intensive applications.
-				I write about the technical patterns that actually work in production — not theory, but battle-tested approaches.
+				17+ years building trading systems at hedge funds (Millennium, ExodusPoint) and banks (Citi).
+				Now applying that experience to AI agent development and high-performance tooling.
+				I write about patterns that work in production — battle-tested, not theoretical.
 			</p>
 		</div>
 
@@ -64,8 +65,8 @@
 			</div>
 			<h2><span class="accent">#</span> This Site</h2>
 			<p>
-				greatai.dev is where I share technical deep-dives on data grids, AI integration,
-				and building software for finance. No fluff, just practical insights from shipping real products.
+				greatai.dev is where I share technical deep-dives on AI agent orchestration, multi-agent development,
+				and high-performance data systems. No fluff, just practical insights from shipping real products.
 			</p>
 		</div>
 	</div>
