@@ -3,6 +3,14 @@
 
 	const products = [
 		{
+			name: 'operum.ai',
+			description: 'AI agent orchestrator for builders. 6 specialized agents (PM, Architect, Engineer, Tester, Marketing, Community) that coordinate to ship products autonomously.',
+			url: 'https://operum.ai',
+			tags: ['AI Agents', 'Orchestration', 'Automation', 'Local-first'],
+			status: 'Alpha',
+			icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="8" r="2"/><circle cx="19" cy="16" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="5" cy="16" r="2"/><circle cx="5" cy="8" r="2"/><line x1="12" y1="7" x2="12" y2="9"/><line x1="17.2" y1="9" x2="14.8" y2="10.5"/><line x1="17.2" y1="15" x2="14.8" y2="13.5"/><line x1="12" y1="17" x2="12" y2="15"/><line x1="6.8" y1="15" x2="9.2" y2="13.5"/><line x1="6.8" y1="9" x2="9.2" y2="10.5"/></svg>'
+		},
+		{
 			name: 'AskTurret',
 			description: 'AI-powered trading terminal. Natural language interface for market data, analytics, and trade execution. Built for speed and reliability.',
 			url: 'https://askturret.com',
