@@ -1,6 +1,6 @@
 ---
 title: 'Enterprise AI Coding: Context Automation is the Missing Layer'
-description: 'AI coding assistants are powerful, but unlocking their full potential in enterprise environments requires a context automation layer. Here's the pattern.'
+description: "AI coding assistants are powerful, but unlocking their full potential in enterprise environments requires a context automation layer. Here's the pattern."
 pubDate: 'Jan 31 2026'
 tags: ['ai', 'enterprise', 'claude-code', 'automation', 'security']
 ---
