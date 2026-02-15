@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
@@ -165,10 +166,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Code Explainer | greatAI.dev</title>
-	<meta name="description" content="Get AI-powered explanations of any code. Understand unfamiliar code quickly with detailed breakdowns." />
-</svelte:head>
+<SEO
+	title="Code Explainer"
+	description="Get AI-powered explanations of any code. Understand unfamiliar code quickly with brief summaries, detailed breakdowns, or line-by-line walkthroughs."
+/>
 
 <div class="explainer-page">
 	<header class="header">
@@ -270,6 +271,12 @@
 			{error}
 		</div>
 	{/if}
+
+	<div class="seo-content">
+		<h2>Understand Any Code Instantly</h2>
+		<p>The Code Explainer uses AI to break down unfamiliar code into clear, educational explanations. Choose from three depth levels: a brief 2-3 sentence summary, a detailed full explanation, or a line-by-line walkthrough that steps through each part of the code.</p>
+		<p>Supports 14 languages including TypeScript, JavaScript, Python, Rust, Go, Java, C#, C++, Ruby, PHP, Swift, Kotlin, SQL, and Bash. Ideal for code reviews, onboarding to new codebases, or understanding open-source libraries.</p>
+	</div>
 </div>
 
 
@@ -605,5 +612,29 @@
 		.explanation-content {
 			min-height: 300px;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

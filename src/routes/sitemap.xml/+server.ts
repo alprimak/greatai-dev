@@ -13,19 +13,19 @@ export const GET: RequestHandler = async () => {
 	const posts = await getPosts();
 
 	const staticPages = [
-		{ url: '', priority: '1.0', changefreq: 'weekly' },
-		{ url: '/blog', priority: '0.9', changefreq: 'daily' },
-		{ url: '/tools', priority: '0.8', changefreq: 'weekly' },
-		{ url: '/projects', priority: '0.8', changefreq: 'monthly' },
-		{ url: '/about', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/code-simplifier', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/code-explainer', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/prompt-optimizer', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/token-calculator', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/json-formatter', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/regex-tester', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/base64', priority: '0.7', changefreq: 'monthly' },
-		{ url: '/tools/timestamp', priority: '0.7', changefreq: 'monthly' }
+		{ url: '', priority: '1.0', changefreq: 'weekly', lastmod: '2026-02-15' },
+		{ url: '/blog', priority: '0.9', changefreq: 'daily', lastmod: '2026-02-15' },
+		{ url: '/tools', priority: '0.8', changefreq: 'weekly', lastmod: '2026-02-15' },
+		{ url: '/projects', priority: '0.8', changefreq: 'monthly', lastmod: '2026-02-01' },
+		{ url: '/about', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-01' },
+		{ url: '/tools/code-simplifier', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/code-explainer', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/prompt-optimizer', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/token-calculator', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/json-formatter', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/regex-tester', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/base64', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' },
+		{ url: '/tools/timestamp', priority: '0.7', changefreq: 'monthly', lastmod: '2026-02-15' }
 	];
 
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -34,6 +34,7 @@ ${staticPages
 	.map(
 		(page) => `  <url>
     <loc>${SITE_URL}${page.url}</loc>
+    <lastmod>${page.lastmod}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>`

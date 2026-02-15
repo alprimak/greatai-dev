@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
@@ -226,10 +227,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Regex Tester | greatAI.dev</title>
-	<meta name="description" content="Test regular expressions with real-time matching and AI-powered explanations. Free regex tester with syntax highlighting." />
-</svelte:head>
+<SEO
+	title="Regex Tester"
+	description="Test regular expressions with real-time matching and AI-powered explanations. Free regex tester with syntax highlighting and pattern examples."
+/>
 
 <div class="regex-page">
 	<header class="header">
@@ -384,6 +385,12 @@
 			{error}
 		</div>
 	{/if}
+
+	<div class="seo-content">
+		<h2>Test and Debug Regular Expressions</h2>
+		<p>The Regex Tester provides real-time pattern matching with highlighted results as you type. Toggle flags for global, case-insensitive, multiline, and dotall modes. See every match with its position and captured groups displayed clearly below the test string.</p>
+		<p>Use the AI-powered explanation feature to get a human-readable breakdown of complex patterns. Built-in examples for common regex tasks — email validation, phone numbers, URLs, and date formats — help you get started quickly.</p>
+	</div>
 </div>
 
 
@@ -843,5 +850,29 @@
 		.explanation-section {
 			position: static;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

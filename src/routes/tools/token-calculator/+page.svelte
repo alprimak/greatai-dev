@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	import { browser } from '$app/environment';
 
 	let text = $state('');
@@ -95,10 +96,10 @@
 	const stats = $derived(countStats(text));
 </script>
 
-<svelte:head>
-	<title>Token Calculator | greatAI.dev</title>
-	<meta name="description" content="Count tokens for Claude, GPT-4, Gemini, and other AI models. Free real-time token calculator." />
-</svelte:head>
+<SEO
+	title="Token Calculator"
+	description="Count tokens and estimate costs for Claude, GPT-4, Gemini, and Llama. Free real-time token calculator with context window visualization."
+/>
 
 <div class="calculator-page">
 	<header class="header">
@@ -184,6 +185,12 @@
 					</div>
 				{/each}
 			</div>
+		</div>
+
+		<div class="seo-content">
+			<h2>Estimate AI Token Costs</h2>
+			<p>The Token Calculator estimates token counts across six popular AI models: Claude 3.5/4, Claude 3 Haiku, GPT-4o, GPT-4o Mini, Gemini 1.5 Pro, and Llama 3.1 70B. It calculates both input and output costs per model, shows what percentage of each model's context window your text uses, and auto-detects whether your input is code or natural language for more accurate estimates.</p>
+			<p>Token counts are estimated using average characters-per-token ratios for each model. Code typically uses more tokens per character than natural language. Actual counts may vary based on specific tokenizer implementations.</p>
 		</div>
 	</div>
 </div>
@@ -458,5 +465,29 @@
 		textarea {
 			height: 200px;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

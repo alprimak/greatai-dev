@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	let prompt = $state('');
 	let goal = $state('');
 	let model = $state('Claude');
@@ -109,13 +110,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Prompt Optimizer | greatAI.dev</title>
-	<meta
-		name="description"
-		content="Improve your AI prompts with expert analysis and optimization. Get better results from Claude, GPT-4, and other LLMs."
-	/>
-</svelte:head>
+<SEO
+	title="Prompt Optimizer"
+	description="Improve your AI prompts with expert analysis and optimization. Get better results from Claude, GPT-4, Gemini, and Llama with structured, effective prompts."
+/>
 
 <div class="tool-page">
 	<header class="hero">
@@ -206,6 +204,12 @@
 				</div>
 			</div>
 		{/if}
+
+		<div class="seo-content">
+			<h2>Write Better AI Prompts</h2>
+			<p>The Prompt Optimizer analyzes your prompts and rewrites them for maximum effectiveness. It identifies common issues like vague instructions, missing context, and lack of structure, then produces an optimized version tailored to your target model — Claude, GPT-4, Gemini, or Llama.</p>
+			<p>Try the built-in examples to see how vague requests, missing context, overly broad questions, and unstructured prompts get transformed into clear, actionable instructions that produce better AI outputs.</p>
+		</div>
 	</div>
 </div>
 
@@ -517,5 +521,29 @@
 			flex-direction: column;
 			align-items: flex-start;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

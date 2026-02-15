@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	let timestamp = $state(Math.floor(Date.now() / 1000));
 	let milliseconds = $state(false);
 	let dateInput = $state('');
@@ -132,13 +133,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Unix Timestamp Converter | greatAI.dev</title>
-	<meta
-		name="description"
-		content="Convert Unix timestamps to human-readable dates and vice versa. Support for seconds and milliseconds."
-	/>
-</svelte:head>
+<SEO
+	title="Unix Timestamp Converter"
+	description="Convert Unix timestamps to human-readable dates and vice versa. Supports seconds and milliseconds, multiple timezones, ISO 8601 output, and relative time display."
+/>
 
 <div class="tool-page">
 	<header class="hero">
@@ -268,6 +266,12 @@
 					<span class="desc">Tomorrow</span>
 				</button>
 			</div>
+		</div>
+
+		<div class="seo-content">
+			<h2>Unix Timestamp Conversion</h2>
+			<p>The Unix Timestamp Converter translates between Unix epoch timestamps and human-readable dates in real time. It supports both second and millisecond precision, 12 common timezones, and outputs in multiple formats including ISO 8601, local time, UTC, and relative time (e.g., "3 days ago").</p>
+			<p>Use the built-in reference timestamps to quickly jump to notable dates like the Unix epoch (January 1, 1970), the billennium (September 9, 2001), the Y2K38 problem date, or tomorrow's timestamp. The live counter shows the current Unix time updating every second.</p>
 		</div>
 	</div>
 </div>
@@ -637,5 +641,29 @@
 		.timestamps-list {
 			grid-template-columns: 1fr;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

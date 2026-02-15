@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
@@ -227,10 +228,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>JSON Formatter | greatAI.dev</title>
-	<meta name="description" content="Format, validate, minify, and sort JSON online. Free JSON formatter with syntax highlighting." />
-</svelte:head>
+<SEO
+	title="JSON Formatter"
+	description="Format, validate, minify, and sort JSON online. Free JSON formatter with Monaco editor, syntax highlighting, and real-time validation."
+/>
 
 <div class="formatter-page">
 	<header class="header">
@@ -326,6 +327,12 @@
 			Valid JSON
 		</div>
 	{/if}
+
+	<div class="seo-content">
+		<h2>Format and Validate JSON Online</h2>
+		<p>The JSON Formatter provides a full-featured editing environment powered by Monaco (the same editor behind VS Code). Paste any JSON to instantly validate it, then format with configurable indentation, minify for production use, or sort keys alphabetically for consistent structure.</p>
+		<p>Real-time statistics show key count, nesting depth, and file size as you type. Ideal for debugging API responses, cleaning up configuration files, or preparing JSON payloads for testing.</p>
+	</div>
 </div>
 
 <style>
@@ -607,5 +614,29 @@
 		.editor {
 			height: 300px;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

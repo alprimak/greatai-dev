@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
@@ -180,10 +181,10 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Code Simplifier | greatAI.dev</title>
-	<meta name="description" content="Simplify and clean up your code using AI. Free tool powered by Claude." />
-</svelte:head>
+<SEO
+	title="Code Simplifier"
+	description="Simplify and clean up your code using AI. Supports TypeScript, Python, Rust, Go, and 8 more languages. Free tool powered by Claude."
+/>
 
 <div class="simplifier-page">
 	<header class="header">
@@ -272,6 +273,12 @@
 			{error}
 		</div>
 	{/if}
+
+	<div class="seo-content">
+		<h2>AI-Powered Code Simplification</h2>
+		<p>The Code Simplifier analyzes your code and produces a cleaner, more maintainable version while preserving all functionality. It identifies overly complex logic, redundant patterns, and opportunities for clearer expression across 12 programming languages including TypeScript, Python, Rust, Go, Java, and C++.</p>
+		<p>Built on Claude by Anthropic, the tool applies best practices for each language — simplifying nested conditionals, extracting repeated logic, improving naming, and reducing cognitive complexity. Paste your code, select the language, and get an instant refactored version.</p>
+	</div>
 </div>
 
 <style>
@@ -533,5 +540,29 @@
 		.editor {
 			height: 300px;
 		}
+	}
+
+	.seo-content {
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 2rem 0 0;
+		border-top: 1px solid #2a2a3a;
+	}
+
+	.seo-content h2 {
+		color: #fff;
+		font-size: 1.25rem;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p {
+		color: #888;
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin: 0 0 1rem;
+	}
+
+	.seo-content p:last-child {
+		margin-bottom: 0;
 	}
 </style>

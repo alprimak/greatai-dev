@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/components/SEO.svelte';
 	let input = $state('');
 	let output = $state('');
 	let mode = $state<'encode' | 'decode'>('encode');
@@ -121,13 +122,10 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Base64 Encoder/Decoder | greatAI.dev</title>
-	<meta
-		name="description"
-		content="Encode and decode Base64 strings instantly. Supports URL-safe encoding and file uploads."
-	/>
-</svelte:head>
+<SEO
+	title="Base64 Encoder/Decoder"
+	description="Encode and decode Base64 strings instantly. Supports standard and URL-safe encoding, file uploads, and download of results."
+/>
 
 <div class="tool-page">
 	<header class="hero">
