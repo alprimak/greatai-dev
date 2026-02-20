@@ -146,7 +146,7 @@ A few lessons from building this:
 
 operum.ai is preparing for public launch. The architecture described here is what's running in production right now — the same system that went from [17 issues to 194](/blog/operum-ai-agent-team-scales-up) in two weeks.
 
-If you want to try autonomous agent orchestration on your own projects, [join the waitlist at operum.ai](https://operum.ai). Early access is coming soon.
+If you want to try autonomous agent orchestration on your own projects, [download operum.ai](https://operum.ai/download) — it's available now for macOS and Linux.
 
 ---
 

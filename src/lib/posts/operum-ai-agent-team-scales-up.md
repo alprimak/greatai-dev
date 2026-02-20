@@ -61,7 +61,7 @@ This is the orchestrator-workers pattern from Anthropic's [Building Effective Ag
 
 The agents are now preparing for operum.ai's public launch. That means the Marketing agent is drafting launch content, the PM is coordinating the rollout, and the Engineer is building the features needed for public alpha. The system is building its own launch.
 
-If you're a solo founder or small team that wants AI agents working alongside you -- not just answering questions but actually executing -- [join the operum.ai waitlist](https://operum.ai).
+If you're a solo founder or small team that wants AI agents working alongside you -- not just answering questions but actually executing -- [download operum.ai](https://operum.ai/download). Available now for macOS and Linux.
 
 I'll keep sharing real numbers as they come in. No cherry-picked demos. Just what actually happens when you let AI agents run in production.
 

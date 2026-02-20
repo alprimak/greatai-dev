@@ -9,7 +9,7 @@ For the past six months, I've been running an experiment: what if instead of usi
 
 Not one agent doing everything. A team of specialists—PM, Architect, Engineer, Tester, Marketing, Community—each with clear responsibilities, coordinating through defined protocols.
 
-The result is [operum.ai](https://operum.ai), now entering closed alpha.
+The result is [operum.ai](https://operum.ai), now available for download.
 
 ## The Problem With Single-Agent Workflows
 
@@ -74,15 +74,15 @@ When I wake up, I check what shipped overnight. The mental model shifts from "wh
 
 **Transparent operation.** Every agent action is logged. You can see exactly what happened, why, and when.
 
-## Closed Alpha
+## Download
 
-operum.ai is entering closed alpha. I'm looking for:
+operum.ai is available now. Built for:
 
 - **Solo founders** building products who want to ship faster
 - **Small teams** who need more capacity without more headcount
 - **Developers** interested in multi-agent architectures
 
-If you're building something and want an AI team working alongside you, [join the waitlist](https://operum.ai) or DM me directly.
+If you're building something and want an AI team working alongside you, [download operum.ai](https://operum.ai/download) — available now for macOS and Linux.
 
 ## What's Next
 
