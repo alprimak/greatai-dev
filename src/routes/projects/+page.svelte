@@ -6,14 +6,23 @@
 			name: 'operum.ai',
 			description: 'AI agent orchestrator for builders. 6 specialized agents (PM, Architect, Engineer, Tester, Marketing, Community) that coordinate to ship products autonomously.',
 			url: 'https://operum.ai',
+			links: [
+				{ label: 'Discord', href: 'https://discord.gg/2xaKNEKyNV' },
+				{ label: 'GitHub', href: 'https://github.com/alprimak/operum' },
+				{ label: 'Benchmark', href: 'https://github.com/alprimak/operum-versus' },
+			],
 			tags: ['AI Agents', 'Orchestration', 'Automation', 'Local-first'],
-			status: 'Alpha',
+			status: 'Open Beta',
 			icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="8" r="2"/><circle cx="19" cy="16" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="5" cy="16" r="2"/><circle cx="5" cy="8" r="2"/><line x1="12" y1="7" x2="12" y2="9"/><line x1="17.2" y1="9" x2="14.8" y2="10.5"/><line x1="17.2" y1="15" x2="14.8" y2="13.5"/><line x1="12" y1="17" x2="12" y2="15"/><line x1="6.8" y1="15" x2="9.2" y2="13.5"/><line x1="6.8" y1="9" x2="9.2" y2="10.5"/></svg>'
 		},
 		{
 			name: 'AskTurret',
 			description: 'AI-powered trading terminal. Natural language interface for market data, analytics, and trade execution. Built for speed and reliability.',
 			url: 'https://askturret.com',
+			links: [
+				{ label: 'Chat', href: 'https://askturret.chat' },
+				{ label: 'Grid', href: 'https://grid.askturret.com' },
+			],
 			tags: ['AI', 'Trading', 'Finance', 'TypeScript', 'React'],
 			status: 'Active',
 			icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'
@@ -22,6 +31,10 @@
 			name: 'AskTurret Grid',
 			description: 'Standalone high-performance data grid component. Handles millions of rows with sub-millisecond updates. Built for trading and analytics.',
 			url: 'https://grid.askturret.com',
+			links: [
+				{ label: 'GitHub', href: 'https://github.com/alprimak/askturret-grid' },
+				{ label: 'npm', href: 'https://www.npmjs.com/package/askturret-grid' },
+			],
 			tags: ['Data Grid', 'Performance', 'TypeScript', 'Rust'],
 			status: 'Active',
 			icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>'
@@ -63,6 +76,20 @@
 								<span class="tag">{tag}</span>
 							{/each}
 						</div>
+						{#if product.links?.length}
+							<div class="extra-links" role="list">
+								{#each product.links as link}
+									<a
+										href={link.href}
+										target="_blank"
+										rel="noopener"
+										class="extra-link"
+										role="listitem"
+										onclick={(e) => e.stopPropagation()}
+									>{link.label}</a>
+								{/each}
+							</div>
+						{/if}
 					</div>
 				</a>
 			</li>
@@ -230,6 +257,31 @@
 		border-radius: 4px;
 		font-size: 0.75rem;
 		font-family: 'JetBrains Mono', 'Fira Code', monospace;
+	}
+
+	.extra-links {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-top: 0.75rem;
+	}
+
+	.extra-link {
+		padding: 0.25rem 0.75rem;
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		font-size: 0.8rem;
+		font-family: 'JetBrains Mono', 'Fira Code', monospace;
+		color: var(--text-secondary);
+		text-decoration: none;
+		transition: all 0.2s;
+		background: var(--bg-secondary);
+	}
+
+	.extra-link:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+		background: rgba(39, 202, 64, 0.08);
 	}
 
 	@media (max-width: 720px) {

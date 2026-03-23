@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { AUTHOR, SOCIAL_LINKS } from '$lib/config';
 	import SEO from '$lib/components/SEO.svelte';
+
+	let { data } = $props();
 </script>
 
 <SEO
@@ -73,6 +75,15 @@
 
 	<section class="connect-section">
 		<h2><span class="accent">&gt;</span> Connect</h2>
+		<div class="qr-row">
+			<div class="qr-card">
+				<div class="qr-code">{@html data.qrSvg}</div>
+				<div class="qr-label">
+					<span class="qr-url">greatai.dev/about</span>
+					<span class="qr-desc">Scan to share this page</span>
+				</div>
+			</div>
+		</div>
 		<div class="social-grid">
 			<a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener" class="social-link">
 				<svg viewBox="0 0 16 16" fill="currentColor">
@@ -256,6 +267,50 @@
 
 	.section-card a:hover {
 		border-bottom-color: var(--accent);
+	}
+
+	/* QR Code */
+	.qr-row {
+		margin-bottom: 1.5rem;
+	}
+
+	.qr-card {
+		display: inline-flex;
+		align-items: center;
+		gap: 1.25rem;
+		padding: 1rem 1.5rem;
+		background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+		border: 1px solid var(--border);
+		border-radius: 12px;
+	}
+
+	.qr-code {
+		width: 80px;
+		height: 80px;
+		flex-shrink: 0;
+	}
+
+	.qr-code :global(svg) {
+		width: 80px;
+		height: 80px;
+	}
+
+	.qr-label {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.qr-url {
+		font-family: 'JetBrains Mono', 'Fira Code', monospace;
+		font-size: 0.9rem;
+		color: var(--accent);
+		font-weight: 500;
+	}
+
+	.qr-desc {
+		font-size: 0.8rem;
+		color: var(--text-muted);
 	}
 
 	/* Connect Section */
