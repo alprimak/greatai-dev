@@ -9,5 +9,6 @@ export const SOCIAL_LINKS = {
 	twitterOperum: 'https://twitter.com/OperumAI',
 	linkedin: 'https://www.linkedin.com/in/alexander-primak/',
 	github: 'https://github.com/alprimak',
-	devto: 'https://dev.to/alprimak'
+	devto: 'https://dev.to/alprimak',
+	discord: 'https://discord.com/invite/2xaKNEKyNV'
 };
