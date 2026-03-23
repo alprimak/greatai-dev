@@ -6,6 +6,8 @@ export const SITE_URL = 'https://greatai.dev';
 
 export const SOCIAL_LINKS = {
 	twitter: 'https://twitter.com/alprimak',
+	twitterOperum: 'https://twitter.com/OperumAI',
 	linkedin: 'https://www.linkedin.com/in/alexander-primak/',
-	github: 'https://github.com/alprimak'
+	github: 'https://github.com/alprimak',
+	devto: 'https://dev.to/alprimak'
 };
